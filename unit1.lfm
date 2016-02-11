@@ -36,13 +36,13 @@ object MainForm: TMainForm
     object USBLabel: TLabel
       AnchorSideLeft.Control = USBComboBox
       AnchorSideBottom.Control = USBComboBox
-      Left = 87
+      Left = 53
       Height = 22
-      Top = 16
+      Top = 30
       Width = 101
       Anchors = [akLeft, akBottom]
-      BorderSpacing.Left = 40
-      BorderSpacing.Bottom = 4
+      BorderSpacing.Left = 6
+      BorderSpacing.Bottom = 2
       Caption = 'USB Device'
       Font.Height = -19
       Font.Name = 'FreeSans'
@@ -52,15 +52,13 @@ object MainForm: TMainForm
     object USBComboBox: TComboBox
       AnchorSideLeft.Control = USBStepLabel
       AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = USBStepLabel
       AnchorSideTop.Side = asrBottom
-      AnchorSideBottom.Control = USBStepLabel
-      AnchorSideBottom.Side = asrBottom
       Left = 47
       Height = 32
-      Top = 42
+      Top = 54
       Width = 700
       Align = alCustom
-      Anchors = [akLeft, akBottom]
       AutoSize = False
       BorderStyle = bsSingle
       ItemHeight = 0
@@ -72,10 +70,10 @@ object MainForm: TMainForm
       AnchorSideTop.Control = StepsPanel
       Left = 30
       Height = 24
-      Top = 50
+      Top = 30
       Width = 17
       BorderSpacing.Left = 30
-      BorderSpacing.Top = 50
+      BorderSpacing.Top = 30
       Caption = '1.'
       Font.Height = -21
       Font.Name = 'FreeSans'
@@ -88,9 +86,9 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrBottom
       Left = 30
       Height = 24
-      Top = 175
+      Top = 152
       Width = 17
-      BorderSpacing.Top = 137
+      BorderSpacing.Top = 100
       Caption = '2.'
       Font.Height = -21
       Font.Name = 'FreeSans'
@@ -98,16 +96,15 @@ object MainForm: TMainForm
       ParentFont = False
     end
     object ISOLabel: TLabel
-      AnchorSideLeft.Control = ISOStepLabel
-      AnchorSideLeft.Side = asrBottom
+      AnchorSideLeft.Control = ISOEdit
       AnchorSideBottom.Control = ISOEdit
-      Left = 87
+      Left = 53
       Height = 22
-      Top = 141
+      Top = 152
       Width = 67
       Anchors = [akLeft, akBottom]
-      BorderSpacing.Left = 40
-      BorderSpacing.Bottom = 4
+      BorderSpacing.Left = 6
+      BorderSpacing.Bottom = 2
       Caption = 'ISO File'
       Font.Height = -19
       Font.Name = 'FreeSans'
@@ -117,41 +114,41 @@ object MainForm: TMainForm
     object ISOEdit: TEdit
       AnchorSideLeft.Control = ISOStepLabel
       AnchorSideLeft.Side = asrBottom
-      AnchorSideBottom.Control = ISOStepLabel
+      AnchorSideTop.Control = ISOStepLabel
+      AnchorSideTop.Side = asrBottom
       AnchorSideBottom.Side = asrBottom
       Left = 47
       Height = 32
-      Top = 167
+      Top = 176
       Width = 700
-      Anchors = [akLeft, akBottom]
       AutoSize = False
       TabOrder = 1
       Text = '~/Downloads/dummy.iso'
     end
     object ISOBrowseButton: TButton
-      AnchorSideLeft.Control = ISOEdit
       AnchorSideTop.Control = ISOEdit
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = ISOEdit
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = ISOEdit
-      Left = 47
+      Left = 647
       Height = 40
-      Top = 199
-      Width = 700
-      Anchors = [akTop, akLeft, akRight]
+      Top = 212
+      Width = 100
+      Anchors = [akTop, akRight]
+      BorderSpacing.Top = 4
       Caption = 'Browse'
       TabOrder = 2
     end
     object DDStepLabel: TLabel
-      AnchorSideLeft.Control = USBStepLabel
+      AnchorSideLeft.Control = ISOStepLabel
       AnchorSideTop.Control = ISOLabel
       AnchorSideTop.Side = asrBottom
       Left = 30
       Height = 24
-      Top = 302
+      Top = 274
       Width = 17
-      BorderSpacing.Top = 139
+      BorderSpacing.Top = 100
       Caption = '3.'
       Font.Height = -21
       Font.Name = 'FreeSans'
@@ -159,16 +156,15 @@ object MainForm: TMainForm
       ParentFont = False
     end
     object DDLabel: TLabel
-      AnchorSideLeft.Control = DDStepLabel
-      AnchorSideLeft.Side = asrBottom
+      AnchorSideLeft.Control = DDEdit
       AnchorSideBottom.Control = DDEdit
-      Left = 87
+      Left = 53
       Height = 22
-      Top = 268
+      Top = 274
       Width = 111
       Anchors = [akLeft, akBottom]
-      BorderSpacing.Left = 40
-      BorderSpacing.Bottom = 4
+      BorderSpacing.Left = 6
+      BorderSpacing.Bottom = 2
       Caption = 'dd Command'
       Font.Height = -19
       Font.Name = 'FreeSans'
@@ -178,45 +174,45 @@ object MainForm: TMainForm
     object DDEdit: TEdit
       AnchorSideLeft.Control = DDStepLabel
       AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = DDStepLabel
+      AnchorSideTop.Side = asrBottom
       AnchorSideRight.Side = asrBottom
-      AnchorSideBottom.Control = DDStepLabel
-      AnchorSideBottom.Side = asrBottom
+      AnchorSideBottom.Side = asrCenter
       Left = 47
       Height = 32
-      Top = 294
+      Top = 298
       Width = 700
-      Anchors = [akLeft, akBottom]
       AutoSize = False
       TabOrder = 3
       Text = 'sudo dd if=~/Downloads/dummy.iso of=/dev/sdz; sync'
     end
     object DDExecuteButton: TButton
-      AnchorSideLeft.Control = DDEdit
       AnchorSideTop.Control = DDEdit
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = DDEdit
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = DDEdit
-      Left = 47
+      Left = 647
       Height = 40
-      Top = 326
-      Width = 700
-      Anchors = [akTop, akLeft, akRight]
+      Top = 334
+      Width = 100
+      Anchors = [akTop, akRight]
+      BorderSpacing.Top = 4
       Caption = 'Execute'
       TabOrder = 4
     end
     object USBrefreshButton: TButton
-      AnchorSideLeft.Control = USBComboBox
       AnchorSideTop.Control = USBComboBox
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = USBComboBox
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = USBComboBox
-      Left = 47
+      Left = 647
       Height = 40
-      Top = 74
-      Width = 700
-      Anchors = [akTop, akLeft, akRight]
+      Top = 90
+      Width = 100
+      Anchors = [akTop, akRight]
+      BorderSpacing.Top = 4
       Caption = 'Refresh'
       OnClick = USBrefreshButtonClick
       TabOrder = 5
