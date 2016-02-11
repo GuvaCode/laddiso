@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <Compiler Value="/usr/bin/fpc" Date="1449313866"/>
-  <Params Value=" -MObjFPC -Scghi -Cg -O1 -g -gl -l -vewnhibq -Fi/home/doomy/Projects/pascal/work/laddiso/src/lib/x86_64-linux -Fl/opt/gnome/lib -Fu/usr/share/lazarus/1.6RC2/lcl/units/x86_64-linux/gtk2 -Fu/usr/share/lazarus/1.6RC2/lcl/units/x86_64-linux -Fu/usr/share/lazarus/1.6RC2/components/lazutils/lib/x86_64-linux -Fu/usr/share/lazarus/1.6RC2/packager/units/x86_64-linux -Fu/home/doomy/Projects/pascal/work/laddiso/src/ -FU/home/doomy/Projects/pascal/work/laddiso/src/lib/x86_64-linux/ -dLCL -dLCLgtk2 laddiso.lpr"/>
+  <Params Value=" -MObjFPC -Scghi -Cg -O1 -g -gl -l -vewnhibq -Fi/home/doomy/Projects/pascal/work/laddiso/src/lib/x86_64-linux -Fl/opt/gnome/lib -Fu/home/doomy/.lazarus/lib/units/x86_64-linux/gtk2 -Fu/home/doomy/.lazarus/lib/LCLBase/units/x86_64-linux -Fu/home/doomy/.lazarus/lib/LazUtils/lib/x86_64-linux -Fu/home/doomy/.lazarus/lib/units/x86_64-linux -Fu/home/doomy/Projects/pascal/work/laddiso/src/ -FU/home/doomy/Projects/pascal/work/laddiso/src/lib/x86_64-linux/ -dLCL -dLCLgtk2 laddiso.lpr"/>
 </CONFIG>
