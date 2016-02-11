@@ -20,30 +20,31 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 440
+    Height = 430
     Top = 0
-    Width = 750
+    Width = 760
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoSize = True
-    BorderSpacing.Right = 30
-    BorderSpacing.Bottom = 30
+    BorderSpacing.Right = 20
+    BorderSpacing.Bottom = 40
     BevelOuter = bvNone
-    ClientHeight = 440
-    ClientWidth = 750
+    ClientHeight = 430
+    ClientWidth = 760
     Color = clForm
     ParentColor = False
     TabOrder = 0
     object USBLabel: TLabel
-      AnchorSideLeft.Control = USBComboBox
-      AnchorSideBottom.Control = USBComboBox
-      Left = 53
+      AnchorSideLeft.Control = USBrefreshButton
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = USBrefreshButton
+      AnchorSideTop.Side = asrCenter
+      Left = 143
       Height = 22
-      Top = 30
-      Width = 101
-      Anchors = [akLeft, akBottom]
+      Top = 31
+      Width = 138
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
-      Caption = 'USB Device'
+      Caption = 'the USB devices'
       Font.Height = -19
       Font.Name = 'FreeSans'
       ParentColor = False
@@ -52,27 +53,28 @@ object MainForm: TMainForm
     object USBComboBox: TComboBox
       AnchorSideLeft.Control = USBStepLabel
       AnchorSideLeft.Side = asrBottom
-      AnchorSideTop.Control = USBStepLabel
+      AnchorSideTop.Control = USBrefreshButton
       AnchorSideTop.Side = asrBottom
-      Left = 47
+      AnchorSideBottom.Side = asrCenter
+      Left = 37
       Height = 32
-      Top = 54
-      Width = 700
+      Top = 64
+      Width = 500
       Align = alCustom
       AutoSize = False
       BorderStyle = bsSingle
       ItemHeight = 0
-      TabOrder = 0
+      TabOrder = 1
       Text = '/dev/sdz'
     end
     object USBStepLabel: TLabel
       AnchorSideLeft.Control = StepsPanel
       AnchorSideTop.Control = StepsPanel
-      Left = 30
+      Left = 20
       Height = 24
       Top = 30
       Width = 17
-      BorderSpacing.Left = 30
+      BorderSpacing.Left = 20
       BorderSpacing.Top = 30
       Caption = '1.'
       Font.Height = -21
@@ -84,11 +86,11 @@ object MainForm: TMainForm
       AnchorSideLeft.Control = USBStepLabel
       AnchorSideTop.Control = USBLabel
       AnchorSideTop.Side = asrBottom
-      Left = 30
+      Left = 20
       Height = 24
-      Top = 152
+      Top = 133
       Width = 17
-      BorderSpacing.Top = 100
+      BorderSpacing.Top = 80
       Caption = '2.'
       Font.Height = -21
       Font.Name = 'FreeSans'
@@ -96,16 +98,17 @@ object MainForm: TMainForm
       ParentFont = False
     end
     object ISOLabel: TLabel
-      AnchorSideLeft.Control = ISOEdit
-      AnchorSideBottom.Control = ISOEdit
-      Left = 53
+      AnchorSideLeft.Control = ISOBrowseButton
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = ISOBrowseButton
+      AnchorSideTop.Side = asrCenter
+      Left = 143
       Height = 22
-      Top = 152
-      Width = 67
-      Anchors = [akLeft, akBottom]
+      Top = 134
+      Width = 96
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
-      Caption = 'ISO File'
+      Caption = 'for ISO files'
       Font.Height = -19
       Font.Name = 'FreeSans'
       ParentColor = False
@@ -114,41 +117,40 @@ object MainForm: TMainForm
     object ISOEdit: TEdit
       AnchorSideLeft.Control = ISOStepLabel
       AnchorSideLeft.Side = asrBottom
-      AnchorSideTop.Control = ISOStepLabel
+      AnchorSideTop.Control = ISOBrowseButton
       AnchorSideTop.Side = asrBottom
       AnchorSideBottom.Side = asrBottom
-      Left = 47
+      Left = 37
       Height = 32
-      Top = 176
-      Width = 700
+      Top = 167
+      Width = 600
       AutoSize = False
-      TabOrder = 1
+      TabOrder = 3
       Text = '~/Downloads/dummy.iso'
     end
     object ISOBrowseButton: TButton
-      AnchorSideLeft.Control = ISOEdit
-      AnchorSideTop.Control = ISOEdit
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = ISOEdit
+      AnchorSideLeft.Control = ISOStepLabel
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = ISOStepLabel
+      AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
-      AnchorSideBottom.Control = ISOEdit
-      Left = 47
+      Left = 37
       Height = 40
-      Top = 212
+      Top = 125
       Width = 100
-      BorderSpacing.Top = 4
+      BorderSpacing.Bottom = 2
       Caption = 'Browse'
       TabOrder = 2
     end
     object DDStepLabel: TLabel
-      AnchorSideLeft.Control = USBStepLabel
+      AnchorSideLeft.Control = ISOStepLabel
       AnchorSideTop.Control = ISOLabel
       AnchorSideTop.Side = asrBottom
-      Left = 30
+      Left = 20
       Height = 24
-      Top = 274
+      Top = 236
       Width = 17
-      BorderSpacing.Top = 100
+      BorderSpacing.Top = 80
       Caption = '3.'
       Font.Height = -21
       Font.Name = 'FreeSans'
@@ -156,16 +158,17 @@ object MainForm: TMainForm
       ParentFont = False
     end
     object DDLabel: TLabel
-      AnchorSideLeft.Control = DDEdit
-      AnchorSideBottom.Control = DDEdit
-      Left = 53
+      AnchorSideLeft.Control = DDExecuteButton
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = DDExecuteButton
+      AnchorSideTop.Side = asrCenter
+      Left = 143
       Height = 22
-      Top = 274
-      Width = 111
-      Anchors = [akLeft, akBottom]
+      Top = 237
+      Width = 138
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
-      Caption = 'dd Command'
+      Caption = 'the dd command'
       Font.Height = -19
       Font.Name = 'FreeSans'
       ParentColor = False
@@ -174,48 +177,46 @@ object MainForm: TMainForm
     object DDEdit: TEdit
       AnchorSideLeft.Control = DDStepLabel
       AnchorSideLeft.Side = asrBottom
-      AnchorSideTop.Control = DDStepLabel
+      AnchorSideTop.Control = DDExecuteButton
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Side = asrCenter
-      Left = 47
+      Left = 37
       Height = 32
-      Top = 298
+      Top = 270
       Width = 700
       AutoSize = False
-      TabOrder = 3
+      TabOrder = 5
       Text = 'sudo dd if=~/Downloads/dummy.iso of=/dev/sdz; sync'
     end
     object DDExecuteButton: TButton
-      AnchorSideLeft.Control = DDEdit
-      AnchorSideTop.Control = DDEdit
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = DDEdit
+      AnchorSideLeft.Control = DDStepLabel
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = DDStepLabel
+      AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
-      AnchorSideBottom.Control = DDEdit
-      Left = 47
+      Left = 37
       Height = 40
-      Top = 334
+      Top = 228
       Width = 100
-      BorderSpacing.Top = 4
+      BorderSpacing.Bottom = 2
       Caption = 'Execute'
       TabOrder = 4
     end
     object USBrefreshButton: TButton
-      AnchorSideLeft.Control = USBComboBox
-      AnchorSideTop.Control = USBComboBox
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Control = USBComboBox
+      AnchorSideLeft.Control = USBStepLabel
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = USBStepLabel
+      AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
-      AnchorSideBottom.Control = USBComboBox
-      Left = 47
+      Left = 37
       Height = 40
-      Top = 90
+      Top = 22
       Width = 100
-      BorderSpacing.Top = 4
+      BorderSpacing.Bottom = 2
       Caption = 'Refresh'
       OnClick = USBrefreshButtonClick
-      TabOrder = 5
+      TabOrder = 0
     end
   end
   object ISOFind: TOpenDialog
