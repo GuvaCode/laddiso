@@ -74,7 +74,7 @@ begin
 
   AProcess := TProcess.Create(nil);
   AStringList := TStringList.Create;
-  AProcess.CommandLine := ;
+  AProcess.CommandLine := command;
   AProcess.Options := AProcess.Options + [poWaitOnExit, poUsePipes];
 
   AProcess.Execute;
