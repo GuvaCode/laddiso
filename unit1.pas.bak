@@ -61,19 +61,20 @@ var
   output: String;
 begin
   command :=
-    Trim('ls -lQ /dev/disk/by-id                    ') +
-    Trim('  | sed -n ''/usb/p''                     ') +
-    Trim('  | sed ''/sd.[0-9]/d''                   ') +
-    Trim('  | sed ''s/[^"]* //''                    ') +
-    Trim('  | sed ''s/\/dev\/disk\/by-id\/usb-//g'' ') +
-    Trim('  | sed ''s/\..\/..\///g''                ') +
-    Trim('  | sed ''s/_[0-9].*:0//g''               ') +
-    Trim('  | sed ''s/_/ /g''                       ') ;
+    Trim('/bin/sh -c "                  ') +
+    Trim('ls -lQ /dev/disk/by-id        ') +
+    Trim('  |sed -n ''/usb/p''          ') +
+    Trim('  |sed ''/sd.[0-9]/d''        ') +
+    Trim('  |sed ''s/[^\""]* //''       ') +
+    Trim('  |sed ''s/\usb-//g''         ') +
+    Trim('  |sed ''s/\..\/..\///g''     ') +
+    Trim('  |sed ''s/_[0-9].*:0//g''    ') +
+    Trim('  |sed ''s/_/ /g''            ') +
+    Trim('"                             ');
 
   AProcess := TProcess.Create(nil);
   AStringList := TStringList.Create;
-  //AProcess.CommandLine := '/bin/sh -c  "ls -lQ /dev/disk/by-id|sed -n ''/usb/p''|sed ''/sd.[0-9]/d''|sed ''s/[^\"]* //''|sed ''s/\usb-//g''|sed ''s/\..\/..\///g''|sed ''s/_[0-9].*:0//g''|sed ''s/_/ /g''"';
-  AProcess.CommandLine := '/bin/sh -c  "ls -lQ /dev/disk/by-id|sed -n ''/usb/p''|sed ''/sd.[0-9]/d''|sed ''s/[^\""]* //''|sed ''s/\usb-//g''|sed ''s/\..\/..\///g''|sed ''s/_[0-9].*:0//g''|sed ''s/_/ /g''"';
+  AProcess.CommandLine := ;
   AProcess.Options := AProcess.Options + [poWaitOnExit, poUsePipes];
 
   AProcess.Execute;
