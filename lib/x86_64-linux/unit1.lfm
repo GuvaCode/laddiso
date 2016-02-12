@@ -58,11 +58,12 @@ object MainForm: TMainForm
       AnchorSideBottom.Side = asrCenter
       Left = 43
       Height = 32
-      Top = 61
+      Top = 63
       Width = 500
       Align = alCustom
       AutoSize = False
       BorderSpacing.Left = 6
+      BorderSpacing.Top = 4
       BorderStyle = bsSingle
       ItemHeight = 0
       TabOrder = 1
@@ -89,9 +90,9 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrBottom
       Left = 20
       Height = 24
-      Top = 133
+      Top = 143
       Width = 17
-      BorderSpacing.Top = 80
+      BorderSpacing.Top = 90
       Caption = '2.'
       Font.Height = -21
       Font.Name = 'FreeSans'
@@ -105,7 +106,7 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrCenter
       Left = 121
       Height = 22
-      Top = 134
+      Top = 144
       Width = 96
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
@@ -123,10 +124,11 @@ object MainForm: TMainForm
       AnchorSideBottom.Side = asrBottom
       Left = 43
       Height = 32
-      Top = 164
+      Top = 176
       Width = 600
       AutoSize = False
       BorderSpacing.Left = 6
+      BorderSpacing.Top = 4
       TabOrder = 3
       Text = '~/Downloads/dummy.iso'
     end
@@ -138,7 +140,7 @@ object MainForm: TMainForm
       AnchorSideRight.Side = asrBottom
       Left = 43
       Height = 34
-      Top = 128
+      Top = 138
       Width = 72
       AutoSize = True
       BorderSpacing.Left = 6
@@ -155,9 +157,9 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrBottom
       Left = 20
       Height = 24
-      Top = 236
+      Top = 256
       Width = 17
-      BorderSpacing.Top = 80
+      BorderSpacing.Top = 90
       Caption = '3.'
       Font.Height = -21
       Font.Name = 'FreeSans'
@@ -171,7 +173,7 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrCenter
       Left = 125
       Height = 22
-      Top = 237
+      Top = 257
       Width = 138
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
@@ -190,10 +192,11 @@ object MainForm: TMainForm
       AnchorSideBottom.Side = asrCenter
       Left = 43
       Height = 32
-      Top = 267
+      Top = 289
       Width = 700
       AutoSize = False
       BorderSpacing.Left = 6
+      BorderSpacing.Top = 4
       TabOrder = 5
       Text = 'sudo dd if=~/Downloads/dummy.iso of=/dev/sdz; sync'
     end
@@ -205,7 +208,7 @@ object MainForm: TMainForm
       AnchorSideRight.Side = asrBottom
       Left = 43
       Height = 34
-      Top = 231
+      Top = 251
       Width = 76
       AutoSize = True
       BorderSpacing.Left = 6
