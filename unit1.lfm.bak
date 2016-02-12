@@ -38,7 +38,7 @@ object MainForm: TMainForm
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = USBrefreshButton
       AnchorSideTop.Side = asrCenter
-      Left = 143
+      Left = 121
       Height = 22
       Top = 31
       Width = 138
@@ -58,7 +58,7 @@ object MainForm: TMainForm
       AnchorSideBottom.Side = asrCenter
       Left = 37
       Height = 32
-      Top = 64
+      Top = 60
       Width = 500
       Align = alCustom
       AutoSize = False
@@ -102,7 +102,7 @@ object MainForm: TMainForm
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = ISOBrowseButton
       AnchorSideTop.Side = asrCenter
-      Left = 143
+      Left = 119
       Height = 22
       Top = 134
       Width = 96
@@ -122,7 +122,7 @@ object MainForm: TMainForm
       AnchorSideBottom.Side = asrBottom
       Left = 37
       Height = 32
-      Top = 167
+      Top = 163
       Width = 600
       AutoSize = False
       TabOrder = 3
@@ -135,9 +135,10 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
       Left = 37
-      Height = 40
-      Top = 125
-      Width = 100
+      Height = 31
+      Top = 130
+      Width = 76
+      AutoSize = True
       BorderSpacing.Bottom = 2
       Caption = 'Browse'
       TabOrder = 2
@@ -162,7 +163,7 @@ object MainForm: TMainForm
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = DDExecuteButton
       AnchorSideTop.Side = asrCenter
-      Left = 143
+      Left = 125
       Height = 22
       Top = 237
       Width = 138
@@ -183,7 +184,7 @@ object MainForm: TMainForm
       AnchorSideBottom.Side = asrCenter
       Left = 37
       Height = 32
-      Top = 270
+      Top = 266
       Width = 700
       AutoSize = False
       TabOrder = 5
@@ -196,9 +197,10 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
       Left = 37
-      Height = 40
-      Top = 228
-      Width = 100
+      Height = 31
+      Top = 233
+      Width = 82
+      AutoSize = True
       BorderSpacing.Bottom = 2
       Caption = 'Execute'
       TabOrder = 4
@@ -210,9 +212,10 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
       Left = 37
-      Height = 40
-      Top = 22
-      Width = 100
+      Height = 31
+      Top = 27
+      Width = 78
+      AutoSize = True
       BorderSpacing.Bottom = 2
       Caption = 'Refresh'
       OnClick = USBrefreshButtonClick

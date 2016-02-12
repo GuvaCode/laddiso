@@ -8,7 +8,7 @@ object MainForm: TMainForm
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Laddiso'
-  ClientHeight = 470
+  ClientHeight = 465
   ClientWidth = 780
   Menu = MainMenu
   Position = poScreenCenter
@@ -20,7 +20,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 430
+    Height = 425
     Top = 0
     Width = 760
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -28,7 +28,7 @@ object MainForm: TMainForm
     BorderSpacing.Right = 20
     BorderSpacing.Bottom = 40
     BevelOuter = bvNone
-    ClientHeight = 430
+    ClientHeight = 425
     ClientWidth = 760
     Color = clForm
     ParentColor = False
@@ -38,7 +38,7 @@ object MainForm: TMainForm
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = USBrefreshButton
       AnchorSideTop.Side = asrCenter
-      Left = 121
+      Left = 122
       Height = 22
       Top = 31
       Width = 138
@@ -56,12 +56,13 @@ object MainForm: TMainForm
       AnchorSideTop.Control = USBrefreshButton
       AnchorSideTop.Side = asrBottom
       AnchorSideBottom.Side = asrCenter
-      Left = 37
+      Left = 43
       Height = 32
-      Top = 60
+      Top = 61
       Width = 500
       Align = alCustom
       AutoSize = False
+      BorderSpacing.Left = 6
       BorderStyle = bsSingle
       ItemHeight = 0
       TabOrder = 1
@@ -102,7 +103,7 @@ object MainForm: TMainForm
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = ISOBrowseButton
       AnchorSideTop.Side = asrCenter
-      Left = 119
+      Left = 121
       Height = 22
       Top = 134
       Width = 96
@@ -120,11 +121,12 @@ object MainForm: TMainForm
       AnchorSideTop.Control = ISOBrowseButton
       AnchorSideTop.Side = asrBottom
       AnchorSideBottom.Side = asrBottom
-      Left = 37
+      Left = 43
       Height = 32
-      Top = 163
+      Top = 164
       Width = 600
       AutoSize = False
+      BorderSpacing.Left = 6
       TabOrder = 3
       Text = '~/Downloads/dummy.iso'
     end
@@ -134,13 +136,17 @@ object MainForm: TMainForm
       AnchorSideTop.Control = ISOStepLabel
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
-      Left = 37
-      Height = 31
-      Top = 130
-      Width = 76
+      Left = 43
+      Height = 34
+      Top = 128
+      Width = 72
       AutoSize = True
+      BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
       Caption = 'Browse'
+      Font.Height = -19
+      Font.Name = 'FreeSans'
+      ParentFont = False
       TabOrder = 2
     end
     object DDStepLabel: TLabel
@@ -182,11 +188,12 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Side = asrCenter
-      Left = 37
+      Left = 43
       Height = 32
-      Top = 266
+      Top = 267
       Width = 700
       AutoSize = False
+      BorderSpacing.Left = 6
       TabOrder = 5
       Text = 'sudo dd if=~/Downloads/dummy.iso of=/dev/sdz; sync'
     end
@@ -196,13 +203,17 @@ object MainForm: TMainForm
       AnchorSideTop.Control = DDStepLabel
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
-      Left = 37
-      Height = 31
-      Top = 233
-      Width = 82
+      Left = 43
+      Height = 34
+      Top = 231
+      Width = 76
       AutoSize = True
+      BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
       Caption = 'Execute'
+      Font.Height = -19
+      Font.Name = 'FreeSans'
+      ParentFont = False
       TabOrder = 4
     end
     object USBrefreshButton: TButton
@@ -211,14 +222,18 @@ object MainForm: TMainForm
       AnchorSideTop.Control = USBStepLabel
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
-      Left = 37
-      Height = 31
-      Top = 27
-      Width = 78
+      Left = 43
+      Height = 34
+      Top = 25
+      Width = 73
       AutoSize = True
+      BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
       Caption = 'Refresh'
+      Font.Height = -19
+      Font.Name = 'FreeSans'
       OnClick = USBrefreshButtonClick
+      ParentFont = False
       TabOrder = 0
     end
   end
