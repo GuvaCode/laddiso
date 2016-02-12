@@ -52,10 +52,11 @@ object MainForm: TMainForm
     end
     object USBComboBox: TComboBox
       AnchorSideLeft.Control = USBStepLabel
+      AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = USBrefreshButton
       AnchorSideTop.Side = asrBottom
       AnchorSideBottom.Side = asrCenter
-      Left = 26
+      Left = 43
       Height = 32
       Top = 63
       Width = 500
@@ -117,10 +118,11 @@ object MainForm: TMainForm
     end
     object ISOEdit: TEdit
       AnchorSideLeft.Control = ISOStepLabel
+      AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = ISOBrowseButton
       AnchorSideTop.Side = asrBottom
       AnchorSideBottom.Side = asrBottom
-      Left = 26
+      Left = 43
       Height = 32
       Top = 176
       Width = 600
@@ -183,11 +185,12 @@ object MainForm: TMainForm
     end
     object DDEdit: TEdit
       AnchorSideLeft.Control = DDStepLabel
+      AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = DDExecuteButton
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Side = asrCenter
-      Left = 26
+      Left = 43
       Height = 32
       Top = 289
       Width = 700

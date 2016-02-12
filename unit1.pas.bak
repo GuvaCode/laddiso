@@ -85,6 +85,8 @@ begin
 
   AStringList.Free;
   AProcess.Free;
+
+  USBCombobox.Caption:= '';
 end;
 
 end.
