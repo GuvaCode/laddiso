@@ -8,7 +8,7 @@ object MainForm: TMainForm
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Laddiso'
-  ClientHeight = 465
+  ClientHeight = 470
   ClientWidth = 780
   Menu = MainMenu
   Position = poScreenCenter
@@ -20,7 +20,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 425
+    Height = 430
     Top = 0
     Width = 760
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -28,7 +28,7 @@ object MainForm: TMainForm
     BorderSpacing.Right = 20
     BorderSpacing.Bottom = 40
     BevelOuter = bvNone
-    ClientHeight = 425
+    ClientHeight = 430
     ClientWidth = 760
     Color = clForm
     ParentColor = False
@@ -42,7 +42,7 @@ object MainForm: TMainForm
       Height = 22
       Top = 31
       Width = 138
-      BorderSpacing.Left = 6
+      BorderSpacing.Left = 4
       BorderSpacing.Bottom = 2
       Caption = 'the USB devices'
       Font.Height = -19
@@ -58,7 +58,7 @@ object MainForm: TMainForm
       AnchorSideBottom.Side = asrCenter
       Left = 43
       Height = 32
-      Top = 63
+      Top = 62
       Width = 500
       Align = alCustom
       AutoSize = False
@@ -66,8 +66,9 @@ object MainForm: TMainForm
       BorderSpacing.Top = 4
       BorderStyle = bsSingle
       ItemHeight = 0
+      Sorted = True
+      Style = csDropDownList
       TabOrder = 1
-      Text = '/dev/sdz'
     end
     object USBStepLabel: TLabel
       AnchorSideLeft.Control = StepsPanel
@@ -108,7 +109,7 @@ object MainForm: TMainForm
       Height = 22
       Top = 144
       Width = 96
-      BorderSpacing.Left = 6
+      BorderSpacing.Left = 4
       BorderSpacing.Bottom = 2
       Caption = 'for ISO files'
       Font.Height = -19
@@ -124,7 +125,7 @@ object MainForm: TMainForm
       AnchorSideBottom.Side = asrBottom
       Left = 43
       Height = 32
-      Top = 176
+      Top = 175
       Width = 600
       AutoSize = False
       BorderSpacing.Left = 6
@@ -139,9 +140,9 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
       Left = 43
-      Height = 34
-      Top = 138
-      Width = 72
+      Height = 31
+      Top = 140
+      Width = 74
       AutoSize = True
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
@@ -175,7 +176,7 @@ object MainForm: TMainForm
       Height = 22
       Top = 257
       Width = 138
-      BorderSpacing.Left = 6
+      BorderSpacing.Left = 4
       BorderSpacing.Bottom = 2
       Caption = 'the dd command'
       Font.Height = -19
@@ -192,7 +193,7 @@ object MainForm: TMainForm
       AnchorSideBottom.Side = asrCenter
       Left = 43
       Height = 32
-      Top = 289
+      Top = 288
       Width = 700
       AutoSize = False
       BorderSpacing.Left = 6
@@ -207,9 +208,9 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
       Left = 43
-      Height = 34
-      Top = 251
-      Width = 76
+      Height = 31
+      Top = 253
+      Width = 78
       AutoSize = True
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
@@ -226,9 +227,9 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
       Left = 43
-      Height = 34
-      Top = 25
-      Width = 73
+      Height = 31
+      Top = 27
+      Width = 75
       AutoSize = True
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2

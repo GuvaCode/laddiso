@@ -56,9 +56,7 @@ end;
 procedure TMainForm.USBrefreshButtonClick(Sender: TObject);
 var
   command: String;
-  AProcess : TProcess;
-  AStringList: TStringList;
-  output: String;
+  ShellProcess : TProcess;
 begin
   command :=
     Trim('/bin/sh -c "                  ') +
@@ -72,21 +70,18 @@ begin
     Trim('  |sed ''s/_/ /g''            ') +
     Trim('"                             ');
 
-  AProcess := TProcess.Create(nil);
-  AStringList := TStringList.Create;
-  AProcess.CommandLine := command;
-  AProcess.Options := AProcess.Options + [poWaitOnExit, poUsePipes];
+  ShellProcess := TProcess.Create(nil);
+  ShellProcess.CommandLine := command;
+  ShellProcess.Options := ShellProcess.Options + [poWaitOnExit, poUsePipes];
 
-  AProcess.Execute;
+  ShellProcess.Execute;
 
-  AStringList.LoadFromStream(AProcess.Output);
-  output := AStringList.Text;
-  ShowMessage(output);
+  USBCombobox.Items.LoadFromStream(ShellProcess.Output);
+  if USBCombobox.Items.Count > 0 then
+    USBCombobox.Text := USBCombobox.Items[0];
 
-  AStringList.Free;
-  AProcess.Free;
+  ShellProcess.Free;
 
-  USBCombobox.Caption:= '';
 end;
 
 end.
