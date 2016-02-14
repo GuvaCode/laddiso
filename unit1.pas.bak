@@ -19,7 +19,6 @@ type
     DDStepLabel: TLabel;
     ISOBrowseButton: TButton;
     ISOEdit: TEdit;
-    ISOFind: TOpenDialog;
     ISOLabel: TLabel;
     ISOStepLabel: TLabel;
     MainMenu: TMainMenu;
@@ -32,6 +31,7 @@ type
     USBrefreshButton: TButton;
     USBStepLabel: TLabel;
     procedure HelpMainClick(Sender: TObject);
+    procedure ISOBrowseButtonClick(Sender: TObject);
     procedure USBrefreshButtonClick(Sender: TObject);
   private
     { private declarations }
@@ -53,6 +53,23 @@ begin
 
 end;
 
+procedure TMainForm.ISOBrowseButtonClick(Sender: TObject);
+var
+  ISOFind : TOpenDialog;
+begin
+  ISOFind := TOpenDialog.Create(nil);
+
+  ISOFind.Title := 'Open existing .iso file';
+  ISOFind.InitialDir := '/home/';
+  ISOFind.Filter := 'ISO files|*.iso';
+  ISOFind.FilterIndex := 1;
+
+  if ISOFind.Execute = true then
+    ISOEdit.Text := ISOFind.Filename;
+
+  ISOFind.Free;
+end;
+
 procedure TMainForm.USBrefreshButtonClick(Sender: TObject);
 var
   command: String;
@@ -71,6 +88,7 @@ begin
     Trim('"                             ');
 
   ShellProcess := TProcess.Create(nil);
+
   ShellProcess.CommandLine := command;
   ShellProcess.Options := ShellProcess.Options + [poWaitOnExit, poUsePipes];
 
@@ -82,7 +100,10 @@ begin
     begin
       USBCombobox.ItemIndex := 0;
       USBCombobox.SetFocus;
-      USBCombobox.DroppedDown := true;
+
+      if USBCombobox.Items.Count > 1 then
+        USBCombobox.DroppedDown := true;
+
     end;
 
   ShellProcess.Free;

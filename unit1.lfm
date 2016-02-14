@@ -130,8 +130,8 @@ object MainForm: TMainForm
       AutoSize = False
       BorderSpacing.Left = 6
       BorderSpacing.Top = 4
+      ReadOnly = True
       TabOrder = 3
-      Text = '~/Downloads/dummy.iso'
     end
     object ISOBrowseButton: TButton
       AnchorSideLeft.Control = ISOStepLabel
@@ -149,6 +149,7 @@ object MainForm: TMainForm
       Caption = 'Browse'
       Font.Height = -19
       Font.Name = 'FreeSans'
+      OnClick = ISOBrowseButtonClick
       ParentFont = False
       TabOrder = 2
     end
@@ -198,8 +199,9 @@ object MainForm: TMainForm
       AutoSize = False
       BorderSpacing.Left = 6
       BorderSpacing.Top = 4
+      ReadOnly = True
       TabOrder = 5
-      Text = 'sudo dd if=~/Downloads/dummy.iso of=/dev/sdz; sync'
+      Text = 'sudo dd if=.iso of=/dev/sd; sync'
     end
     object DDExecuteButton: TButton
       AnchorSideLeft.Control = DDStepLabel
@@ -240,13 +242,6 @@ object MainForm: TMainForm
       ParentFont = False
       TabOrder = 0
     end
-  end
-  object ISOFind: TOpenDialog
-    FileName = '/home/doomy/Projects/pascal/work/laddiso/src/bak'
-    Filter = '.iso'
-    InitialDir = '/home/doomy/Projects/pascal/work/laddiso/src/'
-    left = 168
-    top = 408
   end
   object MainMenu: TMainMenu
     left = 56
