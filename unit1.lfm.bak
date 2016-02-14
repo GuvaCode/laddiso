@@ -1,15 +1,16 @@
 object MainForm: TMainForm
-  Left = 264
-  Height = 496
-  Top = 276
-  Width = 780
+  Left = 0
+  Height = 696
+  Top = 137
+  Width = 915
+  ActiveControl = StepsPanel
   Anchors = []
   AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Laddiso'
-  ClientHeight = 470
-  ClientWidth = 780
+  ClientHeight = 670
+  ClientWidth = 915
   Menu = MainMenu
   Position = poScreenCenter
   LCLVersion = '1.6.0.2'
@@ -20,16 +21,16 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 430
+    Height = 630
     Top = 0
-    Width = 760
+    Width = 895
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 20
     BorderSpacing.Bottom = 40
     BevelOuter = bvNone
-    ClientHeight = 430
-    ClientWidth = 760
+    ClientHeight = 630
+    ClientWidth = 895
     Color = clForm
     ParentColor = False
     TabOrder = 0
@@ -66,6 +67,7 @@ object MainForm: TMainForm
       BorderSpacing.Top = 4
       BorderStyle = bsSingle
       ItemHeight = 0
+      OnSelect = USBComboBoxSelect
       Sorted = True
       Style = csDropDownList
       TabOrder = 1
@@ -201,7 +203,7 @@ object MainForm: TMainForm
       BorderSpacing.Top = 4
       ReadOnly = True
       TabOrder = 5
-      Text = 'sudo dd if=.iso of=/dev/sd; sync'
+      Text = 'sudo dd if= of=; sync'
     end
     object DDExecuteButton: TButton
       AnchorSideLeft.Control = DDStepLabel

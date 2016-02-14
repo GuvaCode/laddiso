@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, Menus, Process;
+  ExtCtrls, Menus, Process, StrUtils;
 
 type
 
@@ -32,6 +32,7 @@ type
     USBStepLabel: TLabel;
     procedure HelpMainClick(Sender: TObject);
     procedure ISOBrowseButtonClick(Sender: TObject);
+    procedure USBComboBoxSelect(Sender: TObject);
     procedure USBrefreshButtonClick(Sender: TObject);
   private
     { private declarations }
@@ -65,9 +66,20 @@ begin
   ISOFind.FilterIndex := 1;
 
   if ISOFind.Execute = true then
+  begin
     ISOEdit.Text := ISOFind.Filename;
+  end;
 
   ISOFind.Free;
+end;
+
+procedure TMainForm.USBComboBoxSelect(Sender: TObject);
+var
+  initial, head, tail : ShortString;
+
+begin
+  initial := USBCombobox.Text;
+  ShowMessage(DelChars(initial, '"'));
 end;
 
 procedure TMainForm.USBrefreshButtonClick(Sender: TObject);
@@ -94,15 +106,18 @@ begin
 
   ShellProcess.Execute;
 
-  USBCombobox.Items.LoadFromStream(ShellProcess.Output);
+  USBComboBox.Items.LoadFromStream(ShellProcess.Output);
 
-  if USBCombobox.Items.Count > 0 then
+  if USBComboBox.Items.Count > 0 then
     begin
-      USBCombobox.ItemIndex := 0;
-      USBCombobox.SetFocus;
+      USBComboBox.ItemIndex := 0;
+      USBComboBox.SetFocus;
 
-      if USBCombobox.Items.Count > 1 then
-        USBCombobox.DroppedDown := true;
+      if USBComboBox.Items.Count > 1 then
+        begin
+          USBComboBox.DroppedDown := true;
+          USBComboBoxSelect(nil);
+        end;
 
     end;
 
