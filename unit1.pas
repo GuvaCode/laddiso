@@ -78,7 +78,7 @@ begin
 
   USBCombobox.Items.LoadFromStream(ShellProcess.Output);
   if USBCombobox.Items.Count > 0 then
-    USBCombobox.Text := USBCombobox.Items[0];
+    USBCombobox.ItemIndex := 0;
 
   ShellProcess.Free;
 
