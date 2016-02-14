@@ -60,7 +60,7 @@ begin
   ISOFind := TOpenDialog.Create(nil);
 
   ISOFind.Title := 'Open existing .iso file';
-  ISOFind.InitialDir := '/home/';
+  ISOFind.InitialDir := GetUserDir() + '/Downloads';
   ISOFind.Filter := 'ISO files|*.iso';
   ISOFind.FilterIndex := 1;
 

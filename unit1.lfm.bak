@@ -201,7 +201,7 @@ object MainForm: TMainForm
       BorderSpacing.Top = 4
       ReadOnly = True
       TabOrder = 5
-      Text = 'sudo dd if=~/Downloads/dummy.iso of=/dev/sdz; sync'
+      Text = 'sudo dd if=.iso of=/dev/sd; sync'
     end
     object DDExecuteButton: TButton
       AnchorSideLeft.Control = DDStepLabel
