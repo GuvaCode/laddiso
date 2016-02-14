@@ -77,8 +77,16 @@ begin
   ShellProcess.Execute;
 
   USBCombobox.Items.LoadFromStream(ShellProcess.Output);
+
   if USBCombobox.Items.Count > 0 then
-    USBCombobox.ItemIndex := 0;
+    begin
+      USBCombobox.ItemIndex := 0;
+      USBCombobox.SetFocus;
+
+      if USBCombobox.Items.Count > 1 then
+        USBCombobox.DroppedDown := true;
+
+    end;
 
   ShellProcess.Free;
 
