@@ -274,9 +274,9 @@ object MainForm: TMainForm
       Left = 43
       Height = 22
       Top = 340
-      Width = 129
+      Width = 138
       BorderSpacing.Top = 20
-      Caption = 'Verify execution'
+      Caption = 'Execution results'
       Font.Height = -19
       Font.Name = 'FreeSans'
       ParentColor = False

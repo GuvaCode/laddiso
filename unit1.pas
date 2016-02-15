@@ -84,13 +84,16 @@ var
 
    if InputQuery ('Password', 'Enter sudo password:', TRUE, sPass) then
       if MessageDlg ('Confirm',
-                     'Execute command?'
+                     'Execute this command?'
                        + AnsiChar(#10) + AnsiChar(#10)
                        + '"' + DDEdit.Text + '"'
                        + AnsiChar(#10) + AnsiChar(#10)
-                       + 'Please confirm.',
+                       + 'Wait for this message window to disappear'
+                       + ' if you press "Yes". Verify in the execution results'
+                       + ' area to see if the command completed successfully.',
                      mtConfirmation,
-                     [mbYes, mbNo],0
+                     [mbYes, mbNo],
+                     0
                     ) = mrYes then
      begin
        cArgs := 'echo ' + sPass  + ' | ' + DDEdit.Text;
