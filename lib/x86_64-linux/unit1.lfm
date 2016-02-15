@@ -35,9 +35,9 @@ object MainForm: TMainForm
     ParentColor = False
     TabOrder = 0
     object USBLabel: TLabel
-      AnchorSideLeft.Control = USBrefreshButton
+      AnchorSideLeft.Control = USBRefreshButton
       AnchorSideLeft.Side = asrBottom
-      AnchorSideTop.Control = USBrefreshButton
+      AnchorSideTop.Control = USBRefreshButton
       AnchorSideTop.Side = asrCenter
       Left = 122
       Height = 22
@@ -54,7 +54,7 @@ object MainForm: TMainForm
     object USBComboBox: TComboBox
       AnchorSideLeft.Control = USBStepLabel
       AnchorSideLeft.Side = asrBottom
-      AnchorSideTop.Control = USBrefreshButton
+      AnchorSideTop.Control = USBRefreshButton
       AnchorSideTop.Side = asrBottom
       AnchorSideBottom.Side = asrCenter
       Left = 43
@@ -226,7 +226,7 @@ object MainForm: TMainForm
       ParentFont = False
       TabOrder = 4
     end
-    object USBrefreshButton: TButton
+    object USBRefreshButton: TButton
       AnchorSideLeft.Control = USBStepLabel
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = USBStepLabel
@@ -242,7 +242,7 @@ object MainForm: TMainForm
       Caption = 'Refresh'
       Font.Height = -19
       Font.Name = 'FreeSans'
-      OnClick = USBrefreshButtonClick
+      OnClick = USBRefreshButtonClick
       ParentFont = False
       TabOrder = 0
     end

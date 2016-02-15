@@ -29,12 +29,12 @@ type
     StepsPanel: TPanel;
     USBComboBox: TComboBox;
     USBLabel: TLabel;
-    USBrefreshButton: TButton;
+    USBRefreshButton: TButton;
     USBStepLabel: TLabel;
     procedure DDExecuteButtonClick(Sender: TObject);
     procedure ISOBrowseButtonClick(Sender: TObject);
     procedure USBComboBoxSelect(Sender: TObject);
-    procedure USBrefreshButtonClick(Sender: TObject);
+    procedure USBRefreshButtonClick(Sender: TObject);
     procedure DDCommand(Sender: TObject);
   private
     { private declarations }
@@ -77,29 +77,34 @@ var
   shellProcess: TProcess;
   sPass: String;
   cArgs: String;
-begin
-  sPass := 'password';
-  cArgs := 'echo ' + sPass  + ' | ' + DDEdit.Text;
-  DDExecuteOutput.Lines.Clear;
+ begin
+   sPass := '';
+   cArgs := '';
 
-  ShowMessage('Press "OK" and wait for'
-              + AnsiChar(#10) + AnsiChar(#10)
-              + DDEdit.Text
-              + AnsiChar(#10) + AnsiChar(#10)
-              + 'to finish!');
+   if InputQuery ('Password', 'Enter sudo password:', TRUE, sPass) then
+     begin
+       cArgs := 'echo ' + sPass  + ' | ' + DDEdit.Text;
+       DDExecuteOutput.Lines.Clear;
 
-  shellProcess := TProcess.Create(nil);
+       ShowMessage('Press "OK" and wait for'
+                   + AnsiChar(#10) + AnsiChar(#10)
+                   + DDEdit.Text
+                   + AnsiChar(#10) + AnsiChar(#10)
+                   + 'to finish!');
 
-  shellProcess.Executable := '/bin/sh';
-  shellProcess.Parameters.Add('-c');
-  shellProcess.Parameters.Add(cArgs);
+       shellProcess := TProcess.Create(nil);
 
-  shellProcess.Options := shellProcess.Options + [poWaitOnExit, poUsePipes];
-  shellProcess.Execute;
+       shellProcess.Executable := '/bin/sh';
+       shellProcess.Parameters.Add('-c');
+       shellProcess.Parameters.Add(cArgs);
 
-  DDExecuteOutput.Lines.LoadFromStream(shellProcess.Stderr);
+       shellProcess.Options := shellProcess.Options + [poWaitOnExit, poUsePipes];
+       shellProcess.Execute;
 
-  shellProcess.Free;
+       DDExecuteOutput.Lines.LoadFromStream(shellProcess.Stderr);
+
+       shellProcess.Free;
+    end;
 
 end;
 
@@ -130,7 +135,7 @@ begin
   DDCommand(nil);
 end;
 
-procedure TMainForm.USBrefreshButtonClick(Sender: TObject);
+procedure TMainForm.USBRefreshButtonClick(Sender: TObject);
 var
   cArgs: String;
   shellProcess : TProcess;
@@ -179,7 +184,7 @@ begin
                + ISOEdit.Text
                + ' of=/dev/'
                + usbPart;
-               //+ '; sync';
+
 end;
 
 end.
