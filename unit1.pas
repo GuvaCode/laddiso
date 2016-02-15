@@ -25,8 +25,7 @@ type
     HelpMain: TMenuItem;
     Help: TMenuItem;
     About: TMenuItem;
-    Memo1: TMemo;
-    Memo2: TMemo;
+    DDExecuteOutput: TMemo;
     StepsPanel: TPanel;
     USBComboBox: TComboBox;
     USBLabel: TLabel;
@@ -37,7 +36,6 @@ type
     procedure USBComboBoxSelect(Sender: TObject);
     procedure USBrefreshButtonClick(Sender: TObject);
     procedure DDCommand(Sender: TObject);
-    procedure ShellComm(Sender: TObject);
   private
     { private declarations }
   public
@@ -75,8 +73,34 @@ begin
 end;
 
 procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
+var
+  shellProcess: TProcess;
+  sPass: String;
+  cArgs: String;
 begin
-  ShellComm(nil);
+  sPass := 'password';
+  cArgs := 'echo ' + sPass  + ' | ' + DDEdit.Text;
+  DDExecuteOutput.Lines.Clear;
+
+  ShowMessage('Press "OK" and wait for'
+              + AnsiChar(#10) + AnsiChar(#10)
+              + DDEdit.Text
+              + AnsiChar(#10) + AnsiChar(#10)
+              + 'to finish!');
+
+  shellProcess := TProcess.Create(nil);
+
+  shellProcess.Executable := '/bin/sh';
+  shellProcess.Parameters.Add('-c');
+  shellProcess.Parameters.Add(cArgs);
+
+  shellProcess.Options := shellProcess.Options + [poWaitOnExit, poUsePipes];
+  shellProcess.Execute;
+
+  DDExecuteOutput.Lines.LoadFromStream(shellProcess.Stderr);
+
+  shellProcess.Free;
+
 end;
 
 procedure TMainForm.USBComboBoxSelect(Sender: TObject);
@@ -109,7 +133,7 @@ end;
 procedure TMainForm.USBrefreshButtonClick(Sender: TObject);
 var
   cArgs: String;
-  ShellProcess : TProcess;
+  shellProcess : TProcess;
 begin
   cArgs :=
     Trim('ls -lQ /dev/disk/by-id        ') +
@@ -121,14 +145,14 @@ begin
     Trim('  |sed ''s/_[0-9].*:0//g''    ') +
     Trim('  |sed ''s/_/ /g''            ');
 
-  ShellProcess := TProcess.Create(nil);
+  shellProcess := TProcess.Create(nil);
 
-  ShellProcess.Executable := '/bin/sh';
-  ShellProcess.Parameters.Add('-c');
-  ShellProcess.Parameters.Add(cArgs);
-  ShellProcess.Options := ShellProcess.Options + [poWaitOnExit, poUsePipes];
+  shellProcess.Executable := '/bin/sh';
+  shellProcess.Parameters.Add('-c');
+  shellProcess.Parameters.Add(cArgs);
+  shellProcess.Options := shellProcess.Options + [poWaitOnExit, poUsePipes];
 
-  ShellProcess.Execute;
+  shellProcess.Execute;
 
   USBComboBox.Items.LoadFromStream(ShellProcess.Output);
 
@@ -145,7 +169,7 @@ begin
 
     end;
 
-  ShellProcess.Free;
+  shellProcess.Free;
 
 end;
 
@@ -157,36 +181,6 @@ begin
                + usbPart;
                //+ '; sync';
 end;
-
-procedure TMainForm.ShellComm(Sender: TObject);
-var
-  hprocess: TProcess;
-  sPass: String;
-  cArgs: String;
-begin
-  sPass := 'password';
-  cArgs := 'echo ' + sPass  + ' | ' + DDEdit.Text;
-
-  ShowMessage(cArgs);
-
-  hProcess := TProcess.Create(nil);
-
-  hProcess.Executable := '/bin/sh';
-  hprocess.Parameters.Add('-c');
-  hprocess.Parameters.Add(cArgs);
-
-  hProcess.Options := hProcess.Options + [poWaitOnExit, poUsePipes];
-  hProcess.Execute;
-
-  //while hProcess.Running do
-  //  begin
-      memo1.Lines.LoadFromStream(hprocess.Output);
-      memo2.Lines.LoadFromStream(hProcess.Stderr);
-    //end;
-
-  hProcess.Free;
-
- end;
 
 end.
 

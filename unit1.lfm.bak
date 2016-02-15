@@ -246,26 +246,25 @@ object MainForm: TMainForm
       ParentFont = False
       TabOrder = 0
     end
-    object Memo1: TMemo
-      Left = 0
+    object DDExecuteOutput: TMemo
+      AnchorSideLeft.Control = DDEdit
+      AnchorSideTop.Control = DDEdit
+      AnchorSideTop.Side = asrBottom
+      Left = 43
       Height = 90
-      Top = 336
+      Top = 340
       Width = 700
+      BorderSpacing.Top = 20
+      Color = 3882044
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Monospace'
       Lines.Strings = (
-        'Memo1'
+        ''
       )
+      ParentFont = False
       ScrollBars = ssAutoBoth
       TabOrder = 6
-    end
-    object Memo2: TMemo
-      Left = 0
-      Height = 34
-      Top = 424
-      Width = 700
-      Lines.Strings = (
-        'Memo2'
-      )
-      TabOrder = 7
     end
   end
   object MainMenu: TMainMenu
