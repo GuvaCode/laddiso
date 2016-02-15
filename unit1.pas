@@ -42,6 +42,7 @@ type
 
 var
   MainForm: TMainForm;
+  usb_part : ShortString;
 
 implementation
 
@@ -68,6 +69,7 @@ begin
   if ISOFind.Execute = true then
   begin
     ISOEdit.Text := ISOFind.Filename;
+    DDEdit.Text := 'sudo dd if=' + ISOEdit.Text + ' of=/dev/' + usb_part + '; sync';
   end;
 
   ISOFind.Free;
@@ -75,11 +77,29 @@ end;
 
 procedure TMainForm.USBComboBoxSelect(Sender: TObject);
 var
-  initial, head, tail : ShortString;
+  str : ShortString;
+
+  str_len,
+  char_pos: Integer;
 
 begin
-  initial := USBCombobox.Text;
-  ShowMessage(DelChars(initial, '"'));
+  str := USBCombobox.Text;
+  str_len := Length(str);
+  char_pos := PosEx('>', str);
+
+  usb_part :=
+    Trim(
+      DelChars(
+        AnsiMidStr(
+          str,
+          char_pos + 1,
+          str_len - char_pos
+        ),
+        '"'
+      )
+    );
+
+  DDEdit.Text := 'sudo dd if=' + ISOEdit.Text + ' of=/dev/' + usb_part + '; sync';
 end;
 
 procedure TMainForm.USBrefreshButtonClick(Sender: TObject);

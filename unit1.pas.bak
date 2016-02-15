@@ -30,6 +30,7 @@ type
     USBLabel: TLabel;
     USBrefreshButton: TButton;
     USBStepLabel: TLabel;
+    procedure DDCommand(var GUIDD, GUIISO: TObject);
     procedure HelpMainClick(Sender: TObject);
     procedure ISOBrowseButtonClick(Sender: TObject);
     procedure USBComboBoxSelect(Sender: TObject);
@@ -42,10 +43,16 @@ type
 
 var
   MainForm: TMainForm;
+  usb_part : ShortString;
 
 implementation
 
 {$R *.lfm}
+
+procedure DDCommand(GUIDD, GUIISO);
+begin
+  GUIDD.Text := 'sudo dd if=' + GUIISO.Text + ' of=/dev/' + usb_part + '; sync';
+end;
 
 { TMainForm }
 
@@ -68,6 +75,7 @@ begin
   if ISOFind.Execute = true then
   begin
     ISOEdit.Text := ISOFind.Filename;
+    DDCommand(DDEdit, ISOEdit);
   end;
 
   ISOFind.Free;
@@ -75,11 +83,29 @@ end;
 
 procedure TMainForm.USBComboBoxSelect(Sender: TObject);
 var
-  head, tail : ShortString;
+  str : ShortString;
+
+  str_len,
+  char_pos: Integer;
 
 begin
-  head :=
-  ShowMessage(DelChars(USBCombobox.Text, '"'));
+  str := USBCombobox.Text;
+  str_len := Length(str);
+  char_pos := PosEx('>', str);
+
+  usb_part :=
+    Trim(
+      DelChars(
+        AnsiMidStr(
+          str,
+          char_pos + 1,
+          str_len - char_pos
+        ),
+        '"'
+      )
+    );
+
+  DDCommand(DDEdit, ISOEdit);
 end;
 
 procedure TMainForm.USBrefreshButtonClick(Sender: TObject);

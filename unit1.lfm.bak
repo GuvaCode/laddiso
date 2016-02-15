@@ -1,16 +1,16 @@
 object MainForm: TMainForm
   Left = 0
-  Height = 696
-  Top = 137
-  Width = 915
+  Height = 537
+  Top = 138
+  Width = 1160
   ActiveControl = StepsPanel
   Anchors = []
   AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Laddiso'
-  ClientHeight = 670
-  ClientWidth = 915
+  ClientHeight = 506
+  ClientWidth = 1160
   Menu = MainMenu
   Position = poScreenCenter
   LCLVersion = '1.6.0.2'
@@ -21,16 +21,16 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 630
+    Height = 466
     Top = 0
-    Width = 895
+    Width = 1140
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 20
     BorderSpacing.Bottom = 40
     BevelOuter = bvNone
-    ClientHeight = 630
-    ClientWidth = 895
+    ClientHeight = 466
+    ClientWidth = 1140
     Color = clForm
     ParentColor = False
     TabOrder = 0
@@ -39,7 +39,7 @@ object MainForm: TMainForm
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = USBrefreshButton
       AnchorSideTop.Side = asrCenter
-      Left = 122
+      Left = 120
       Height = 22
       Top = 31
       Width = 138
@@ -59,7 +59,7 @@ object MainForm: TMainForm
       AnchorSideBottom.Side = asrCenter
       Left = 43
       Height = 32
-      Top = 62
+      Top = 63
       Width = 500
       Align = alCustom
       AutoSize = False
@@ -67,6 +67,7 @@ object MainForm: TMainForm
       BorderSpacing.Top = 4
       BorderStyle = bsSingle
       ItemHeight = 0
+      OnEnter = USBComboBoxSelect
       OnSelect = USBComboBoxSelect
       Sorted = True
       Style = csDropDownList
@@ -107,7 +108,7 @@ object MainForm: TMainForm
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = ISOBrowseButton
       AnchorSideTop.Side = asrCenter
-      Left = 121
+      Left = 119
       Height = 22
       Top = 144
       Width = 96
@@ -127,7 +128,7 @@ object MainForm: TMainForm
       AnchorSideBottom.Side = asrBottom
       Left = 43
       Height = 32
-      Top = 175
+      Top = 176
       Width = 600
       AutoSize = False
       BorderSpacing.Left = 6
@@ -142,9 +143,9 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
       Left = 43
-      Height = 31
-      Top = 140
-      Width = 74
+      Height = 34
+      Top = 138
+      Width = 72
       AutoSize = True
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
@@ -175,7 +176,7 @@ object MainForm: TMainForm
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = DDExecuteButton
       AnchorSideTop.Side = asrCenter
-      Left = 125
+      Left = 123
       Height = 22
       Top = 257
       Width = 138
@@ -196,14 +197,14 @@ object MainForm: TMainForm
       AnchorSideBottom.Side = asrCenter
       Left = 43
       Height = 32
-      Top = 288
+      Top = 289
       Width = 700
       AutoSize = False
       BorderSpacing.Left = 6
       BorderSpacing.Top = 4
       ReadOnly = True
       TabOrder = 5
-      Text = 'sudo dd if= of=; sync'
+      Text = 'sudo dd if= of=/dev/; sync'
     end
     object DDExecuteButton: TButton
       AnchorSideLeft.Control = DDStepLabel
@@ -212,9 +213,9 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
       Left = 43
-      Height = 31
-      Top = 253
-      Width = 78
+      Height = 34
+      Top = 251
+      Width = 76
       AutoSize = True
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
@@ -231,9 +232,9 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
       Left = 43
-      Height = 31
-      Top = 27
-      Width = 75
+      Height = 34
+      Top = 25
+      Width = 73
       AutoSize = True
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
