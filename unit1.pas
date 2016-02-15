@@ -35,6 +35,7 @@ type
     procedure USBComboBoxSelect(Sender: TObject);
     procedure USBrefreshButtonClick(Sender: TObject);
     procedure DDCommand(Sender: TObject);
+    procedure ShellComm(Sender: TObject);
   private
     { private declarations }
   public
@@ -43,7 +44,7 @@ type
 
 var
   MainForm: TMainForm;
-  usb_part : ShortString;
+  usbPart : ShortString;
 
 implementation
 
@@ -74,9 +75,15 @@ end;
 procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
 var
   command: String;
+  sPass: String;
   ShellProcess : TProcess;
 begin
+  sPass := 'password';
   command :=
+    Trim('echo            ') +
+    ' '                      +
+    sPass                    +
+    Trim('|               ') +
     Trim('/bin/sh -c "    ') +
     DDEdit.Text              +
     Trim('"               ');
@@ -91,27 +98,28 @@ begin
   //ShellProcess.Free;
 
   ShowMessage(command);
+  ShellComm(nil);
 end;
 
 procedure TMainForm.USBComboBoxSelect(Sender: TObject);
 var
   str : ShortString;
 
-  str_len,
-  char_pos: Integer;
+  strLen,
+  charPos: Integer;
 
 begin
   str := USBCombobox.Text;
-  str_len := Length(str);
-  char_pos := PosEx('>', str);
+  strLen := Length(str);
+  charPos := PosEx('>', str);
 
-  usb_part :=
+  usbPart :=
     Trim(
       DelChars(
         AnsiMidStr(
           str,
-          char_pos + 1,
-          str_len - char_pos
+          charPos + 1,
+          strLen - charPos
         ),
         '"'
       )
@@ -168,8 +176,13 @@ begin
   DDEdit.Text := 'sudo dd if='
                + ISOEdit.Text
                + ' of=/dev/'
-               + usb_part
+               + usbPart
                + '; sync';
+end;
+
+procedure TMainForm.ShellComm(Sender: TObject);
+begin
+  ShowMessage('ShellComm');
 end;
 
 end.
