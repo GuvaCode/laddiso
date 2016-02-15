@@ -1,3 +1,4 @@
+{%BuildWorkingDir $(CompPath)\bin}
 unit Unit1;
 
 {$mode objfpc}{$H+}
