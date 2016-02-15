@@ -21,6 +21,7 @@ type
     ISOEdit: TEdit;
     ISOLabel: TLabel;
     ISOStepLabel: TLabel;
+    TermOutput: TLabel;
     MainMenu: TMainMenu;
     HelpMain: TMenuItem;
     Help: TMenuItem;
@@ -82,15 +83,18 @@ var
    cArgs := '';
 
    if InputQuery ('Password', 'Enter sudo password:', TRUE, sPass) then
+      if MessageDlg ('Confirm',
+                     'Execute command?'
+                       + AnsiChar(#10) + AnsiChar(#10)
+                       + '"' + DDEdit.Text + '"'
+                       + AnsiChar(#10) + AnsiChar(#10)
+                       + 'Please confirm.',
+                     mtConfirmation,
+                     [mbYes, mbNo],0
+                    ) = mrYes then
      begin
        cArgs := 'echo ' + sPass  + ' | ' + DDEdit.Text;
        DDExecuteOutput.Lines.Clear;
-
-       ShowMessage('Press "OK" and wait for'
-                   + AnsiChar(#10) + AnsiChar(#10)
-                   + DDEdit.Text
-                   + AnsiChar(#10) + AnsiChar(#10)
-                   + 'to finish!');
 
        shellProcess := TProcess.Create(nil);
 
@@ -98,7 +102,8 @@ var
        shellProcess.Parameters.Add('-c');
        shellProcess.Parameters.Add(cArgs);
 
-       shellProcess.Options := shellProcess.Options + [poWaitOnExit, poUsePipes];
+       shellProcess.Options := shellProcess.Options
+                             + [poWaitOnExit, poUsePipes];
        shellProcess.Execute;
 
        DDExecuteOutput.Lines.LoadFromStream(shellProcess.Stderr);
