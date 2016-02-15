@@ -204,7 +204,7 @@ object MainForm: TMainForm
       BorderSpacing.Top = 4
       ReadOnly = True
       TabOrder = 5
-      Text = 'sudo dd if= of=/dev/; sync'
+      Text = 'dd if= of=/dev/'
     end
     object DDExecuteButton: TButton
       AnchorSideLeft.Control = DDStepLabel

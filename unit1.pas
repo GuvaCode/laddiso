@@ -151,36 +151,40 @@ end;
 
 procedure TMainForm.DDCommand(Sender: TObject);
 begin
-  DDEdit.Text := 'sudo dd if='
+  DDEdit.Text := 'dd if='
                + ISOEdit.Text
                + ' of=/dev/'
-               + usbPart
-               + '; sync';
+               + usbPart;
+               //+ '; sync';
 end;
 
 procedure TMainForm.ShellComm(Sender: TObject);
 var
   hprocess: TProcess;
-  sPass: String;
-  command: String;
+  //sPass: String;
+  //command: String;
 begin
-  sPass := 'password';
-  command := 'echo ' + sPass  + ' | ' + DDEdit.Text;
+  //sPass := 'password';
+  //command := 'echo ' + sPass  + ' | ' + DDEdit.Text;
 
   ShowMessage(command);
 
-  //hProcess := TProcess.Create(nil);
-  //
-  //hProcess.Executable := '/bin/sh';
-  //hprocess.Parameters.Add('-c');
-  //hprocess.Parameters.Add(command);
-  //
-  //hProcess.Options := hProcess.Options + [poWaitOnExit, poUsePipes];
-  //hProcess.Execute;
-  //
-  //memo1.Lines.LoadFromStream(hprocess.Output);
-  //memo2.Lines.LoadFromStream(hProcess.Stderr);
-  //hProcess.Free;
+  hProcess := TProcess.Create(nil);
+
+  hProcess.Executable := '/bin/sh';
+  hprocess.Parameters.Add('-c');
+  hprocess.Parameters.Add(DDEdit.Text);
+
+  hProcess.Options := hProcess.Options + [poWaitOnExit, poUsePipes];
+  hProcess.Execute;
+
+  //while hProcess.Running do
+  //  begin
+      memo1.Lines.LoadFromStream(hprocess.Output);
+      memo2.Lines.LoadFromStream(hProcess.Stderr);
+    //end;
+
+  hProcess.Free;
 
  end;
 
