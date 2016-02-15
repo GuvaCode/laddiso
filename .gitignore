@@ -28,5 +28,6 @@ laddiso
 backup/
 *.bak
 lib/
+bin/
 
 
