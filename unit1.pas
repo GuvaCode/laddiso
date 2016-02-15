@@ -93,7 +93,7 @@ var
                        + AnsiChar(#10) + AnsiChar(#10)
                        + AnsiChar(#10) + AnsiChar(#10)
                        + 'Wait for this message window to disappear.'
-                       + ' If you press "Yes" it may take a while.'
+                       + ' If you press "Yes", it may take a while.'
                        + AnsiChar(#10) + AnsiChar(#10)
                        + 'Verify in the execution results'
                        + ' area to see if the command completed successfully.'

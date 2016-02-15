@@ -93,7 +93,7 @@ var
                        + AnsiChar(#10) + AnsiChar(#10)
                        + AnsiChar(#10) + AnsiChar(#10)
                        + 'Wait for this message window to disappear.'
-                       + ' If you press "Yes" it may take a while.'
+                       + ' If you press "Yes", it may take a while.'
                        + AnsiChar(#10) + AnsiChar(#10)
                        + 'Verify in the execution results'
                        + ' area to see if the command completed successfully.'
@@ -130,7 +130,7 @@ procedure TMainForm.AboutClick(Sender: TObject);
 begin
   ShowMessage('Laddiso'
                + AnsiChar(#10)
-               + '===='
+               + '====='
                + AnsiChar(#10)
                + 'A simple Lazarus/Free Pascal GUI front'
                + ' for the "dd" command on GNU/Linux,'
@@ -138,13 +138,13 @@ begin
                + AnsiChar(#10) + AnsiChar(#10)
                + 'GitHub'
                + AnsiChar(#10)
-               + '===='
+               + '====='
                + AnsiChar(#10)
                + 'https://github.com/itmitica/laddiso'
                + AnsiChar(#10) + AnsiChar(#10)
                + 'Author'
                + AnsiChar(#10)
-               + '===='
+               + '====='
                + AnsiChar(#10)
                + 'Dumitru "Mitică" UNGUREANU'
                + AnsiChar(#10)
@@ -154,7 +154,7 @@ begin
                + AnsiChar(#10) + AnsiChar(#10)
                + 'Version'
                + AnsiChar(#10)
-               + '===='
+               + '====='
                + AnsiChar(#10)
                + 'Laddiso v1.0,'
                + AnsiChar(#10)
