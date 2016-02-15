@@ -246,10 +246,31 @@ object MainForm: TMainForm
       ParentFont = False
       TabOrder = 0
     end
+    object Memo1: TMemo
+      Left = 0
+      Height = 90
+      Top = 336
+      Width = 700
+      Lines.Strings = (
+        'Memo1'
+      )
+      ScrollBars = ssAutoBoth
+      TabOrder = 6
+    end
+    object Memo2: TMemo
+      Left = 0
+      Height = 34
+      Top = 424
+      Width = 700
+      Lines.Strings = (
+        'Memo2'
+      )
+      TabOrder = 7
+    end
   end
   object MainMenu: TMainMenu
-    left = 56
-    top = 408
+    left = 984
+    top = 8
     object HelpMain: TMenuItem
       Caption = 'Help'
       object About: TMenuItem

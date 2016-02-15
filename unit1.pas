@@ -25,6 +25,8 @@ type
     HelpMain: TMenuItem;
     Help: TMenuItem;
     About: TMenuItem;
+    Memo1: TMemo;
+    Memo2: TMemo;
     StepsPanel: TPanel;
     USBComboBox: TComboBox;
     USBLabel: TLabel;
@@ -73,31 +75,7 @@ begin
 end;
 
 procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
-var
-  command: String;
-  sPass: String;
-  ShellProcess : TProcess;
 begin
-  sPass := 'password';
-  command :=
-    Trim('echo            ') +
-    ' '                      +
-    sPass                    +
-    Trim('|               ') +
-    Trim('/bin/sh -c "    ') +
-    DDEdit.Text              +
-    Trim('"               ');
-
-  //ShellProcess := TProcess.Create(nil);
-  //
-  //ShellProcess.CommandLine := command;
-  //ShellProcess.Options := ShellProcess.Options + [poWaitOnExit, poUsePipes];
-  //
-  //ShellProcess.Execute;
-  //
-  //ShellProcess.Free;
-
-  ShowMessage(command);
   ShellComm(nil);
 end;
 
@@ -130,11 +108,10 @@ end;
 
 procedure TMainForm.USBrefreshButtonClick(Sender: TObject);
 var
-  command: String;
+  cArgs: String;
   ShellProcess : TProcess;
 begin
-  command :=
-    Trim('/bin/sh -c "                  ') +
+  cArgs :=
     Trim('ls -lQ /dev/disk/by-id        ') +
     Trim('  |sed -n ''/usb/p''          ') +
     Trim('  |sed ''/sd.[0-9]/d''        ') +
@@ -142,12 +119,13 @@ begin
     Trim('  |sed ''s/\usb-//g''         ') +
     Trim('  |sed ''s/\..\/..\///g''     ') +
     Trim('  |sed ''s/_[0-9].*:0//g''    ') +
-    Trim('  |sed ''s/_/ /g''            ') +
-    Trim('"                             ');
+    Trim('  |sed ''s/_/ /g''            ');
 
   ShellProcess := TProcess.Create(nil);
 
-  ShellProcess.CommandLine := command;
+  ShellProcess.Executable := '/bin/sh';
+  ShellProcess.Parameters.Add('-c');
+  ShellProcess.Parameters.Add(cArgs);
   ShellProcess.Options := ShellProcess.Options + [poWaitOnExit, poUsePipes];
 
   ShellProcess.Execute;
@@ -181,9 +159,30 @@ begin
 end;
 
 procedure TMainForm.ShellComm(Sender: TObject);
+var
+  hprocess: TProcess;
+  sPass: String;
+  command: String;
 begin
-  ShowMessage('ShellComm');
-end;
+  sPass := 'password';
+  command := 'echo ' + sPass  + ' | ' + DDEdit.Text;
+
+  ShowMessage(command);
+
+  //hProcess := TProcess.Create(nil);
+  //
+  //hProcess.Executable := '/bin/sh';
+  //hprocess.Parameters.Add('-c');
+  //hprocess.Parameters.Add(command);
+  //
+  //hProcess.Options := hProcess.Options + [poWaitOnExit, poUsePipes];
+  //hProcess.Execute;
+  //
+  //memo1.Lines.LoadFromStream(hprocess.Output);
+  //memo2.Lines.LoadFromStream(hProcess.Stderr);
+  //hProcess.Free;
+
+ end;
 
 end.
 
