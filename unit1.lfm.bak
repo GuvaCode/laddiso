@@ -290,9 +290,7 @@ object MainForm: TMainForm
       Caption = 'Help'
       object About: TMenuItem
         Caption = 'About Laddiso'
-      end
-      object Help: TMenuItem
-        Caption = 'Help'
+        OnClick = AboutClick
       end
     end
   end

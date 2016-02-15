@@ -24,7 +24,6 @@ type
     TermOutput: TLabel;
     MainMenu: TMainMenu;
     HelpMain: TMenuItem;
-    Help: TMenuItem;
     About: TMenuItem;
     DDExecuteOutput: TMemo;
     StepsPanel: TPanel;
@@ -32,6 +31,7 @@ type
     USBLabel: TLabel;
     USBRefreshButton: TButton;
     USBStepLabel: TLabel;
+    procedure AboutClick(Sender: TObject);
     procedure DDExecuteButtonClick(Sender: TObject);
     procedure ISOBrowseButtonClick(Sender: TObject);
     procedure USBComboBoxSelect(Sender: TObject);
@@ -94,13 +94,14 @@ var
                        + AnsiChar(#10) + AnsiChar(#10)
                        + 'Wait for this message window to disappear.'
                        + ' If you press "Yes" it may take a while.'
-                       + ' Guide yourself using the LED notification light'
-                       + ' on the USB device, if it exists. When flashing stops'
-                       + ', the copying process is finalized.'
                        + AnsiChar(#10) + AnsiChar(#10)
                        + 'Verify in the execution results'
-                       + ' area to see if the command completed successfully.',
-                     mtConfirmation,
+                       + ' area to see if the command completed successfully.'
+                       + AnsiChar(#10) + AnsiChar(#10)
+                       + 'Guide yourself using the LED notification light'
+                       + ' on the USB device, if it exists. When flashing stops'
+                       + ', the copying process is finalized.',
+                       mtConfirmation,
                      [mbYes, mbNo],
                      0
                     ) = mrYes then
@@ -123,6 +124,42 @@ var
        shellProcess.Free;
     end;
 
+end;
+
+procedure TMainForm.AboutClick(Sender: TObject);
+begin
+  ShowMessage('Laddiso'
+               + AnsiChar(#10)
+               + '===='
+               + AnsiChar(#10)
+               + 'A simple Lazarus/Free Pascal GUI front'
+               + ' for the "dd" command on GNU/Linux,'
+               + ' for writing ".iso" files to USB devices.'
+               + AnsiChar(#10) + AnsiChar(#10)
+               + 'GitHub'
+               + AnsiChar(#10)
+               + '===='
+               + AnsiChar(#10)
+               + 'https://github.com/itmitica/laddiso'
+               + AnsiChar(#10) + AnsiChar(#10)
+               + 'Author'
+               + AnsiChar(#10)
+               + '===='
+               + AnsiChar(#10)
+               + 'Dumitru "Mitică" UNGUREANU'
+               + AnsiChar(#10)
+               + 'http://itmitica.github.io/'
+               + AnsiChar(#10)
+               + 'itmitica@gmail.com'
+               + AnsiChar(#10) + AnsiChar(#10)
+               + 'Version'
+               + AnsiChar(#10)
+               + '===='
+               + AnsiChar(#10)
+               + 'Laddiso v1.0,'
+               + AnsiChar(#10)
+               + 'February 15, 2016'
+  );
 end;
 
 procedure TMainForm.USBComboBoxSelect(Sender: TObject);
