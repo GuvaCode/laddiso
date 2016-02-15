@@ -34,6 +34,7 @@ type
     procedure ISOBrowseButtonClick(Sender: TObject);
     procedure USBComboBoxSelect(Sender: TObject);
     procedure USBrefreshButtonClick(Sender: TObject);
+    procedure DDCommand(Sender: TObject);
   private
     { private declarations }
   public
@@ -69,7 +70,7 @@ begin
   if ISOFind.Execute = true then
   begin
     ISOEdit.Text := ISOFind.Filename;
-    DDEdit.Text := 'sudo dd if=' + ISOEdit.Text + ' of=/dev/' + usb_part + '; sync';
+    DDCommand(nil);
   end;
 
   ISOFind.Free;
@@ -99,7 +100,7 @@ begin
       )
     );
 
-  DDEdit.Text := 'sudo dd if=' + ISOEdit.Text + ' of=/dev/' + usb_part + '; sync';
+  DDCommand(nil);
 end;
 
 procedure TMainForm.USBrefreshButtonClick(Sender: TObject);
@@ -143,6 +144,15 @@ begin
 
   ShellProcess.Free;
 
+end;
+
+procedure TMainForm.DDCommand(Sender: TObject);
+begin
+  DDEdit.Text := 'sudo dd if='
+               + ISOEdit.Text
+               + ' of=/dev/'
+               + usb_part
+               + '; sync';
 end;
 
 end.
