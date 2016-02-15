@@ -82,21 +82,30 @@ var
    sPass := '';
    cArgs := '';
 
-   if InputQuery ('Password', 'Enter sudo password:', TRUE, sPass) then
+   if InputQuery ('Authentication required',
+                  'Enter sudo password:',
+                  TRUE,
+                  sPass) then
       if MessageDlg ('Confirm',
                      'Execute this command?'
                        + AnsiChar(#10) + AnsiChar(#10)
                        + '"' + DDEdit.Text + '"'
                        + AnsiChar(#10) + AnsiChar(#10)
-                       + 'Wait for this message window to disappear'
-                       + ' if you press "Yes". Verify in the execution results'
-                       + ' area to see if the command completed successfully.',
-                     mtConfirmation,
+                       + AnsiChar(#10) + AnsiChar(#10)
+                       + 'Wait for this message window to disappear.'
+                       + ' If you press "Yes" it may take a while.'
+                       + AnsiChar(#10) + AnsiChar(#10)
+                       + 'Verify in the execution results'
+                       + ' area to see if the command completed successfully.'
+                       + ' Guide yourself using the LED notification light'
+                       + ' on the USB device, if it exists. When flashing stops'
+                       + ', the copying process is finalized.',
+                       mtConfirmation,
                      [mbYes, mbNo],
                      0
                     ) = mrYes then
      begin
-       cArgs := 'echo ' + sPass  + ' | ' + DDEdit.Text;
+       cArgs := 'echo ' + sPass  + ' | ' + DDEdit.Text + '; sync';
        DDExecuteOutput.Lines.Clear;
 
        shellProcess := TProcess.Create(nil);
