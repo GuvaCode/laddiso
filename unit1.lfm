@@ -222,6 +222,7 @@ object MainForm: TMainForm
       Caption = 'Execute'
       Font.Height = -19
       Font.Name = 'FreeSans'
+      OnClick = DDExecuteButtonClick
       ParentFont = False
       TabOrder = 4
     end
@@ -251,7 +252,6 @@ object MainForm: TMainForm
     top = 408
     object HelpMain: TMenuItem
       Caption = 'Help'
-      OnClick = HelpMainClick
       object About: TMenuItem
         Caption = 'About Laddiso'
       end

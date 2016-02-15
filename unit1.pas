@@ -30,7 +30,7 @@ type
     USBLabel: TLabel;
     USBrefreshButton: TButton;
     USBStepLabel: TLabel;
-    procedure HelpMainClick(Sender: TObject);
+    procedure DDExecuteButtonClick(Sender: TObject);
     procedure ISOBrowseButtonClick(Sender: TObject);
     procedure USBComboBoxSelect(Sender: TObject);
     procedure USBrefreshButtonClick(Sender: TObject);
@@ -51,11 +51,6 @@ implementation
 
 { TMainForm }
 
-procedure TMainForm.HelpMainClick(Sender: TObject);
-begin
-
-end;
-
 procedure TMainForm.ISOBrowseButtonClick(Sender: TObject);
 var
   ISOFind : TOpenDialog;
@@ -74,6 +69,28 @@ begin
   end;
 
   ISOFind.Free;
+end;
+
+procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
+var
+  command: String;
+  ShellProcess : TProcess;
+begin
+  command :=
+    Trim('/bin/sh -c "    ') +
+    DDEdit.Text              +
+    Trim('"               ');
+
+  //ShellProcess := TProcess.Create(nil);
+  //
+  //ShellProcess.CommandLine := command;
+  //ShellProcess.Options := ShellProcess.Options + [poWaitOnExit, poUsePipes];
+  //
+  //ShellProcess.Execute;
+  //
+  //ShellProcess.Free;
+
+  ShowMessage(command);
 end;
 
 procedure TMainForm.USBComboBoxSelect(Sender: TObject);
