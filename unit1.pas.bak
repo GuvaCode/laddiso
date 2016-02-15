@@ -151,7 +151,7 @@ end;
 
 procedure TMainForm.DDCommand(Sender: TObject);
 begin
-  DDEdit.Text := 'sudo dd if='
+  DDEdit.Text := 'sudo -S dd if='
                + ISOEdit.Text
                + ' of=/dev/'
                + usbPart;
@@ -162,18 +162,18 @@ procedure TMainForm.ShellComm(Sender: TObject);
 var
   hprocess: TProcess;
   sPass: String;
-  command: String;
+  cArgs: String;
 begin
   sPass := 'doomy';
-  command := 'echo ' + sPass  + ' | ' + DDEdit.Text;
+  cArgs := 'echo ' + sPass  + ' | ' + DDEdit.Text;
 
-  ShowMessage(command);
+  ShowMessage(cArgs);
 
   hProcess := TProcess.Create(nil);
 
   hProcess.Executable := '/bin/sh';
   hprocess.Parameters.Add('-c');
-  hprocess.Parameters.Add(command);
+  hprocess.Parameters.Add(cArgs);
 
   hProcess.Options := hProcess.Options + [poWaitOnExit, poUsePipes];
   hProcess.Execute;
