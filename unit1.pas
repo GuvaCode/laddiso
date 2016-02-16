@@ -1,4 +1,4 @@
-{%BuildWorkingDir $(CompPath)\bin}
+{%RunCommand $MakeExe(bin/$(EdFile))}
 unit Unit1;
 
 {$mode objfpc}{$H+}

@@ -53,7 +53,7 @@
   <CompilerOptions>
     <Version Value="11"/>
     <Target>
-      <Filename Value="laddiso"/>
+      <Filename Value="bin/laddiso"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
