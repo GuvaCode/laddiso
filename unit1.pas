@@ -107,7 +107,7 @@ var
                      0
                     ) = mrYes then
      begin
-       cArgs := 'echo ' + sPass  + ' | ' + DDEdit.Text + '; sync';
+       cArgs := 'echo ' + sPass  + ' | ' + DDEdit.Text + '&& sync';
        DDExecuteOutput.Lines.Clear;
 
        shellProcess := TProcess.Create(nil);
