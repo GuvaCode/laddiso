@@ -87,27 +87,27 @@ var
                   'Enter sudo password:',
                   TRUE,
                   sPass) then
-      if MessageDlg ('Confirm',
-                     'Execute this command?'
-                       + AnsiChar(#10) + AnsiChar(#10)
-                       + '"' + DDEdit.Text + '"'
-                       + AnsiChar(#10) + AnsiChar(#10)
-                       + AnsiChar(#10) + AnsiChar(#10)
-                       + 'Wait for this message window to disappear.'
-                       + ' If you press "Yes", it may take a while.'
-                       + AnsiChar(#10) + AnsiChar(#10)
-                       + 'Verify in the execution results'
-                       + ' area to see if the command completed successfully.'
-                       + AnsiChar(#10) + AnsiChar(#10)
-                       + 'Guide yourself using the LED notification light'
-                       + ' on the USB device, if it exists. When flashing stops'
-                       + ', the copying process is finalized.',
-                       mtConfirmation,
-                     [mbYes, mbNo],
-                     0
-                    ) = mrYes then
+      //if MessageDlg ('Confirm',
+      //               'Execute this command?'
+      //                 + AnsiChar(#10) + AnsiChar(#10)
+      //                 + '"' + DDEdit.Text + '"'
+      //                 + AnsiChar(#10) + AnsiChar(#10)
+      //                 + AnsiChar(#10) + AnsiChar(#10)
+      //                 + 'Wait for this message window to disappear.'
+      //                 + ' If you press "Yes", it may take a while.'
+      //                 + AnsiChar(#10) + AnsiChar(#10)
+      //                 + 'Verify in the execution results'
+      //                 + ' area to see if the command completed successfully.'
+      //                 + AnsiChar(#10) + AnsiChar(#10)
+      //                 + 'Guide yourself using the LED notification light'
+      //                 + ' on the USB device, if it exists. When flashing stops'
+      //                 + ', the copying process is finalized.',
+      //                 mtConfirmation,
+      //               [mbYes, mbNo],
+      //               0
+      //              ) = mrYes then
      begin
-       cArgs := 'echo ' + sPass  + ' | ' + DDEdit.Text + '&& sync';
+       cArgs := 'echo ' + sPass  + ' | ' + DDEdit.Text;
        DDExecuteOutput.Lines.Clear;
 
        shellProcess := TProcess.Create(nil);
@@ -116,11 +116,14 @@ var
        shellProcess.Parameters.Add('-c');
        shellProcess.Parameters.Add(cArgs);
 
+       //shellProcess.CommandLine:='/bin/sh -c "echo ' + sPass + ' | sudo -S fdisk -l && pv -Wfn -s $(wc -c < /home/doomy/Downloads/CorePlus-current.iso) /home/doomy/Downloads/CorePlus-current.iso | sudo dd of=/dev/sdb bs=1M iflag=fullblock oflag=dsync,direct conv=notrunc,noerror"';
+
        shellProcess.Options := shellProcess.Options
                              + [poWaitOnExit, poUsePipes];
        shellProcess.Execute;
 
        DDExecuteOutput.Lines.LoadFromStream(shellProcess.Stderr);
+       //DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
 
        shellProcess.Free;
     end;
@@ -235,11 +238,13 @@ end;
 
 procedure TMainForm.DDCommand(Sender: TObject);
 begin
-  DDEdit.Text := 'sudo -S dd if='
+  DDEdit.Text := 'sudo -Sv && pv -Wfn -s $(wc -c < '
                + ISOEdit.Text
-               + ' of=/dev/'
-               + usbPart;
-
+               + ') '
+               + ISOEdit.Text
+               + ' | sudo -S dd of=/dev/'
+               + usbPart
+               + ' bs=1M iflag=fullblock oflag=dsync,direct conv=notrunc,noerror';
 end;
 
 end.
