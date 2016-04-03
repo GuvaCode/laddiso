@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 66
+  Left = 528
   Height = 695
-  Top = 138
+  Top = 176
   Width = 911
   ActiveControl = StepsPanel
   Anchors = []

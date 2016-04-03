@@ -47,6 +47,7 @@ type
 var
   MainForm: TMainForm;
   usbPart : ShortString;
+  shellProcess: TProcess;
 
 implementation
 
@@ -75,8 +76,6 @@ begin
 end;
 
 procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
-var
-  shellProcess: TProcess;
  begin
   DDExecuteOutput.Lines.Clear;
 
@@ -87,11 +86,11 @@ var
   shellProcess.Parameters.Add(DDEdit.Text);
 
   shellProcess.Options := shellProcess.Options
-                       + [poWaitOnExit, poUsePipes];
+                       + [poUsePipes, poStderrToOutPut{, poWaitOnExit}];
   shellProcess.Execute;
 
-  DDExecuteOutput.Lines.LoadFromStream(shellProcess.Stderr);
-  //DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
+  //DDExecuteOutput.Lines.LoadFromStream(shellProcess.Stderr);
+  DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
 
   shellProcess.Free;
 end;
@@ -162,7 +161,6 @@ end;
 procedure TMainForm.USBRefreshButtonClick(Sender: TObject);
 var
   cArgs: String;
-  shellProcess : TProcess;
 begin
   cArgs :=
     Trim('ls -lQ /dev/disk/by-id        ') +
