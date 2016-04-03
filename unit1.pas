@@ -28,12 +28,14 @@ type
     About: TMenuItem;
     DDExecuteOutput: TMemo;
     StepsPanel: TPanel;
+    IsItOver: TTimer;
     USBComboBox: TComboBox;
     USBLabel: TLabel;
     USBRefreshButton: TButton;
     USBStepLabel: TLabel;
     procedure AboutClick(Sender: TObject);
     procedure DDExecuteButtonClick(Sender: TObject);
+    procedure IsItOverTimer(Sender: TObject);
     procedure ISOBrowseButtonClick(Sender: TObject);
     procedure USBComboBoxSelect(Sender: TObject);
     procedure USBRefreshButtonClick(Sender: TObject);
@@ -75,9 +77,11 @@ begin
   ISOFind.Free;
 end;
 
+
 procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
  begin
   DDExecuteOutput.Lines.Clear;
+  DDExecuteOutput.Lines.Add('Start');
 
   shellProcess := TProcess.Create(nil);
 
@@ -87,12 +91,28 @@ procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
 
   shellProcess.Options := shellProcess.Options
                        + [poUsePipes, poStderrToOutPut{, poWaitOnExit}];
+
   shellProcess.Execute;
 
+  IsItOver.Enabled:=true;
   //DDExecuteOutput.Lines.LoadFromStream(shellProcess.Stderr);
-  DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
+  //DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
 
   shellProcess.Free;
+end;
+
+procedure TMainForm.IsItOverTimer(Sender: TObject);
+begin
+      if (shellProcess.Active = false) then
+        begin
+          DDExecuteOutput.Lines.Add('End.');
+          IsItOver.Enabled:=false;
+        end
+      else
+        begin
+           DDExecuteOutput.Lines.Add('..running');
+          //DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
+        end;
 end;
 
 procedure TMainForm.AboutClick(Sender: TObject);
@@ -177,7 +197,7 @@ begin
   shellProcess.Executable := '/bin/sh';
   shellProcess.Parameters.Add('-c');
   shellProcess.Parameters.Add(cArgs);
-  shellProcess.Options := shellProcess.Options + [poWaitOnExit, poUsePipes];
+  shellProcess.Options := shellProcess.Options + [{poWaitOnExit, }poUsePipes];
 
   shellProcess.Execute;
 
