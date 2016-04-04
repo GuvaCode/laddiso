@@ -79,12 +79,12 @@ end;
 
 
 procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
-const
-  C_BUFSIZE = 2048;
-var
-  Buffer: pointer;
-  SStream: TStringStream;
-  nread: longint;
+//const
+//  C_BUFSIZE = 2048;
+//var
+//  Buffer: pointer;
+//  SStream: TStringStream;
+//  nread: longint;
  begin
   DDExecuteOutput.Lines.Clear;
   DDExecuteOutput.Lines.Add('Start');
@@ -100,48 +100,52 @@ var
 
   shellProcess.Execute;
 
-  { outside }
-  // Prepare for capturing output
-  Getmem(Buffer, C_BUFSIZE);
-  SStream := TStringStream.Create('');
+  //{ outside }
+  //// Prepare for capturing output
+  //Getmem(Buffer, C_BUFSIZE);
+  //SStream := TStringStream.Create('');
+  //
+  //// Start capturing output
+  //while shellProcess.Running do
+  //begin
+  //  nread := shellProcess.Output.Read(Buffer^, C_BUFSIZE);
+  //  if nread = 0 then
+  //    sleep(100)
+  //  else
+  //    begin
+  //      // Translate raw input to a string
+  //      SStream.size := 0;
+  //      SStream.Write(Buffer^, nread);
+  //      // And add the raw stringdata to the memo
+  //      DDExecuteOutput.Lines.Text := DDExecuteOutput.Lines.Text + SStream.DataString;
+  //      Application.ProcessMessages;
+  //    end;
+  //end;
+  //
+  //// Capture remainder of the output
+  //repeat
+  //  nread := shellProcess.Output.Read(Buffer^, C_BUFSIZE);
+  //  if nread > 0 then
+  //  begin
+  //    SStream.size := 0;
+  //    SStream.Write(Buffer^, nread);
+  //    DDExecuteOutput.Lines.Text := DDExecuteOutput.Lines.Text + SStream.Datastring;
+  //    Application.ProcessMessages;
+  //  end
+  //until nread = 0;
+  //
+  //// Clean up
+  //Freemem(buffer);
+  //SStream.Free;
+  //{/outside}
 
-  // Start capturing output
+  //DDExecuteOutput.Lines.LoadFromStream(shellProcess.Stderr);
+
   while shellProcess.Running do
   begin
-    nread := shellProcess.Output.Read(Buffer^, C_BUFSIZE);
-    if nread = 0 then
-      sleep(100)
-    else
-      begin
-        // Translate raw input to a string
-        SStream.size := 0;
-        SStream.Write(Buffer^, nread);
-        // And add the raw stringdata to the memo
-        DDExecuteOutput.Lines.Text := DDExecuteOutput.Lines.Text + SStream.DataString;
-        Application.ProcessMessages;
-      end;
+    DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
+    Application.ProcessMessages;
   end;
-
-  // Capture remainder of the output
-  repeat
-    nread := shellProcess.Output.Read(Buffer^, C_BUFSIZE);
-    if nread > 0 then
-    begin
-      SStream.size := 0;
-      SStream.Write(Buffer^, nread);
-      DDExecuteOutput.Lines.Text := DDExecuteOutput.Lines.Text + SStream.Datastring;
-      Application.ProcessMessages;
-    end
-  until nread = 0;
-
-  // Clean up
-  Freemem(buffer);
-  SStream.Free;
-  {/outside}
-
-  //IsItOver.Enabled:=true;
-  //DDExecuteOutput.Lines.LoadFromStream(shellProcess.Stderr);
-  //DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
 
   shellProcess.Free;
 end;
