@@ -79,6 +79,12 @@ end;
 
 
 procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
+const
+  C_BUFSIZE = 2048;
+var
+  Buffer: pointer;
+  SStream: TStringStream;
+  nread: longint;
  begin
   DDExecuteOutput.Lines.Clear;
   DDExecuteOutput.Lines.Add('Start');
@@ -94,7 +100,46 @@ procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
 
   shellProcess.Execute;
 
-  IsItOver.Enabled:=true;
+  { outside }
+  // Prepare for capturing output
+  Getmem(Buffer, C_BUFSIZE);
+  SStream := TStringStream.Create('');
+
+  // Start capturing output
+  while shellProcess.Running do
+  begin
+    nread := shellProcess.Output.Read(Buffer^, C_BUFSIZE);
+    if nread = 0 then
+      sleep(100)
+    else
+      begin
+        // Translate raw input to a string
+        SStream.size := 0;
+        SStream.Write(Buffer^, nread);
+        // And add the raw stringdata to the memo
+        DDExecuteOutput.Lines.Text := DDExecuteOutput.Lines.Text + SStream.DataString;
+        Application.ProcessMessages;
+      end;
+  end;
+
+  // Capture remainder of the output
+  repeat
+    nread := shellProcess.Output.Read(Buffer^, C_BUFSIZE);
+    if nread > 0 then
+    begin
+      SStream.size := 0;
+      SStream.Write(Buffer^, nread);
+      DDExecuteOutput.Lines.Text := DDExecuteOutput.Lines.Text + SStream.Datastring;
+      Application.ProcessMessages;
+    end
+  until nread = 0;
+
+  // Clean up
+  Freemem(buffer);
+  SStream.Free;
+  {/outside}
+
+  //IsItOver.Enabled:=true;
   //DDExecuteOutput.Lines.LoadFromStream(shellProcess.Stderr);
   //DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
 
@@ -103,16 +148,15 @@ end;
 
 procedure TMainForm.IsItOverTimer(Sender: TObject);
 begin
-      if (shellProcess.Active = false) then
-        begin
-          DDExecuteOutput.Lines.Add('End.');
-          IsItOver.Enabled:=false;
-        end
-      else
-        begin
-           DDExecuteOutput.Lines.Add('..running');
-          //DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
-        end;
+  //if (shellProcess.Active = true) then
+  //  begin
+  //    DDExecuteOutput.Lines.Add('..running');
+  //  end
+  //else
+  //  begin
+  //    DDExecuteOutput.Lines.Add('End.');
+  //    IsItOver.Enabled:=false;
+  //  end;
 end;
 
 procedure TMainForm.AboutClick(Sender: TObject);
