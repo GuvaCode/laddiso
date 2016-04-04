@@ -7,7 +7,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, Menus, Process, StrUtils;
+  ExtCtrls, Menus, ComCtrls, Process, StrUtils;
 
 type
 
@@ -22,6 +22,7 @@ type
     ISOEdit: TEdit;
     ISOLabel: TLabel;
     ISOStepLabel: TLabel;
+    ProgressBar1: TProgressBar;
     TermOutput: TLabel;
     MainMenu: TMainMenu;
     HelpMain: TMenuItem;
@@ -76,6 +77,7 @@ begin
 end;
 
 procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
+var I, Code : Integer;
  begin
   DDExecuteOutput.Lines.Clear;
   DDExecuteOutput.Lines.Add('Start');
@@ -93,8 +95,18 @@ procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
 
   while shellProcess.Running do
   begin
+    DDExecuteOutput.Lines.Clear;
     DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
+
+  Val(DDExecuteOutput.Lines[0],I,Code);
+  if Code=0 then
+    ProgressBar1.Position:=I;
+
     Application.ProcessMessages;
+
+    Val(DDExecuteOutput.Lines[0],I,Code);
+    if Code=0 then
+      ProgressBar1.Position:=I;
   end;
 
   shellProcess.Free;

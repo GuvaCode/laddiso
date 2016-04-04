@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 528
+  Left = 486
   Height = 695
-  Top = 176
+  Top = 225
   Width = 911
   ActiveControl = StepsPanel
   Anchors = []
@@ -61,7 +61,7 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrBottom
       AnchorSideBottom.Side = asrCenter
       Left = 44
-      Height = 37
+      Height = 39
       Top = 69
       Width = 500
       Align = alCustom
@@ -291,6 +291,15 @@ object MainForm: TMainForm
       Font.Name = 'Noto Sans'
       ParentColor = False
       ParentFont = False
+    end
+    object ProgressBar1: TProgressBar
+      Left = 44
+      Height = 20
+      Top = 344
+      Width = 699
+      Anchors = [akTop]
+      TabOrder = 7
+      BarShowText = True
     end
   end
   object MainMenu: TMainMenu
