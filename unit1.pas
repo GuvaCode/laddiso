@@ -28,14 +28,12 @@ type
     About: TMenuItem;
     DDExecuteOutput: TMemo;
     StepsPanel: TPanel;
-    IsItOver: TTimer;
     USBComboBox: TComboBox;
     USBLabel: TLabel;
     USBRefreshButton: TButton;
     USBStepLabel: TLabel;
     procedure AboutClick(Sender: TObject);
     procedure DDExecuteButtonClick(Sender: TObject);
-    procedure IsItOverTimer(Sender: TObject);
     procedure ISOBrowseButtonClick(Sender: TObject);
     procedure USBComboBoxSelect(Sender: TObject);
     procedure USBRefreshButtonClick(Sender: TObject);
@@ -77,14 +75,7 @@ begin
   ISOFind.Free;
 end;
 
-
 procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
-//const
-//  C_BUFSIZE = 2048;
-//var
-//  Buffer: pointer;
-//  SStream: TStringStream;
-//  nread: longint;
  begin
   DDExecuteOutput.Lines.Clear;
   DDExecuteOutput.Lines.Add('Start');
@@ -96,50 +87,9 @@ procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
   shellProcess.Parameters.Add(DDEdit.Text);
 
   shellProcess.Options := shellProcess.Options
-                       + [poUsePipes, poStderrToOutPut{, poWaitOnExit}];
+                       + [poUsePipes, poStderrToOutPut];
 
   shellProcess.Execute;
-
-  //{ outside }
-  //// Prepare for capturing output
-  //Getmem(Buffer, C_BUFSIZE);
-  //SStream := TStringStream.Create('');
-  //
-  //// Start capturing output
-  //while shellProcess.Running do
-  //begin
-  //  nread := shellProcess.Output.Read(Buffer^, C_BUFSIZE);
-  //  if nread = 0 then
-  //    sleep(100)
-  //  else
-  //    begin
-  //      // Translate raw input to a string
-  //      SStream.size := 0;
-  //      SStream.Write(Buffer^, nread);
-  //      // And add the raw stringdata to the memo
-  //      DDExecuteOutput.Lines.Text := DDExecuteOutput.Lines.Text + SStream.DataString;
-  //      Application.ProcessMessages;
-  //    end;
-  //end;
-  //
-  //// Capture remainder of the output
-  //repeat
-  //  nread := shellProcess.Output.Read(Buffer^, C_BUFSIZE);
-  //  if nread > 0 then
-  //  begin
-  //    SStream.size := 0;
-  //    SStream.Write(Buffer^, nread);
-  //    DDExecuteOutput.Lines.Text := DDExecuteOutput.Lines.Text + SStream.Datastring;
-  //    Application.ProcessMessages;
-  //  end
-  //until nread = 0;
-  //
-  //// Clean up
-  //Freemem(buffer);
-  //SStream.Free;
-  //{/outside}
-
-  //DDExecuteOutput.Lines.LoadFromStream(shellProcess.Stderr);
 
   while shellProcess.Running do
   begin
@@ -148,19 +98,6 @@ procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
   end;
 
   shellProcess.Free;
-end;
-
-procedure TMainForm.IsItOverTimer(Sender: TObject);
-begin
-  //if (shellProcess.Active = true) then
-  //  begin
-  //    DDExecuteOutput.Lines.Add('..running');
-  //  end
-  //else
-  //  begin
-  //    DDExecuteOutput.Lines.Add('End.');
-  //    IsItOver.Enabled:=false;
-  //  end;
 end;
 
 procedure TMainForm.AboutClick(Sender: TObject);
@@ -245,7 +182,7 @@ begin
   shellProcess.Executable := '/bin/sh';
   shellProcess.Parameters.Add('-c');
   shellProcess.Parameters.Add(cArgs);
-  shellProcess.Options := shellProcess.Options + [{poWaitOnExit, }poUsePipes];
+  shellProcess.Options := shellProcess.Options + [poWaitOnExit, poUsePipes];
 
   shellProcess.Execute;
 

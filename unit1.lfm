@@ -304,10 +304,4 @@ object MainForm: TMainForm
       end
     end
   end
-  object IsItOver: TTimer
-    Enabled = False
-    OnTimer = IsItOverTimer
-    left = 732
-    top = 99
-  end
 end
