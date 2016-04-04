@@ -96,7 +96,6 @@ var percent, isInteger : Integer;
 
   while shellProcess.Running do
   begin
-    DDExecuteOutput.Lines.Clear;
     DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
 
     Val(DDExecuteOutput.Lines[0], percent, isInteger);

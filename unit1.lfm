@@ -61,7 +61,7 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrBottom
       AnchorSideBottom.Side = asrCenter
       Left = 44
-      Height = 39
+      Height = 37
       Top = 69
       Width = 500
       Align = alCustom
