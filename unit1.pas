@@ -22,13 +22,14 @@ type
     ISOEdit: TEdit;
     ISOLabel: TLabel;
     ISOStepLabel: TLabel;
-    ProgressBar1: TProgressBar;
+    DDProgress: TProgressBar;
     TermOutput: TLabel;
     MainMenu: TMainMenu;
     HelpMain: TMenuItem;
     About: TMenuItem;
     DDExecuteOutput: TMemo;
     StepsPanel: TPanel;
+    ProgressLabel: TLabel;
     USBComboBox: TComboBox;
     USBLabel: TLabel;
     USBRefreshButton: TButton;
@@ -77,7 +78,7 @@ begin
 end;
 
 procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
-var I, Code : Integer;
+var percent, isInteger : Integer;
  begin
   DDExecuteOutput.Lines.Clear;
   DDExecuteOutput.Lines.Add('Start');
@@ -98,15 +99,11 @@ var I, Code : Integer;
     DDExecuteOutput.Lines.Clear;
     DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
 
-  Val(DDExecuteOutput.Lines[0],I,Code);
-  if Code=0 then
-    ProgressBar1.Position:=I;
+    Val(DDExecuteOutput.Lines[0], percent, isInteger);
+    if isInteger=0 then
+      DDProgress.Position:=percent;
 
     Application.ProcessMessages;
-
-    Val(DDExecuteOutput.Lines[0],I,Code);
-    if Code=0 then
-      ProgressBar1.Position:=I;
   end;
 
   shellProcess.Free;

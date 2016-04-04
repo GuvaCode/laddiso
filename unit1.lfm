@@ -262,7 +262,7 @@ object MainForm: TMainForm
       AnchorSideTop.Side = asrBottom
       Left = 43
       Height = 90
-      Top = 391
+      Top = 470
       Width = 700
       BorderSpacing.Top = 4
       BorderStyle = bsNone
@@ -279,11 +279,11 @@ object MainForm: TMainForm
     end
     object TermOutput: TLabel
       AnchorSideLeft.Control = DDExecuteButton
-      AnchorSideTop.Control = DDEdit
+      AnchorSideTop.Control = DDProgress
       AnchorSideTop.Side = asrBottom
       Left = 43
       Height = 27
-      Top = 360
+      Top = 439
       Width = 155
       BorderSpacing.Top = 20
       Caption = 'Execution results'
@@ -292,12 +292,30 @@ object MainForm: TMainForm
       ParentColor = False
       ParentFont = False
     end
-    object ProgressBar1: TProgressBar
-      Left = 44
-      Height = 20
-      Top = 344
-      Width = 699
-      Anchors = [akTop]
+    object ProgressLabel: TLabel
+      AnchorSideLeft.Control = DDExecuteButton
+      AnchorSideTop.Control = DDEdit
+      AnchorSideTop.Side = asrBottom
+      Left = 43
+      Height = 27
+      Top = 360
+      Width = 81
+      BorderSpacing.Top = 20
+      Caption = 'Progress'
+      Font.Height = -19
+      Font.Name = 'Noto Sans'
+      ParentColor = False
+      ParentFont = False
+    end
+    object DDProgress: TProgressBar
+      AnchorSideLeft.Control = DDExecuteButton
+      AnchorSideTop.Control = ProgressLabel
+      AnchorSideTop.Side = asrBottom
+      Left = 43
+      Height = 32
+      Top = 387
+      Width = 700
+      Smooth = True
       TabOrder = 7
       BarShowText = True
     end
