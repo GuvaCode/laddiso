@@ -138,9 +138,9 @@ begin
                + AnsiChar(#10)
                + '====='
                + AnsiChar(#10)
-               + 'Laddiso v1.0,'
+               + 'Laddiso v2.1,'
                + AnsiChar(#10)
-               + 'February 15, 2016'
+               + 'April 5th, 2016'
   );
 end;
 
