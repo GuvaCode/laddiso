@@ -14,13 +14,14 @@ type
   { TMainForm }
 
   TMainForm = class(TForm)
-    DDEdit: TEdit;
+    DDEdit: TMemo;
     DDExecuteButton: TButton;
+    DDExecuteOutputMore: TMemo;
     DDLabel: TLabel;
     DDStepLabel: TLabel;
     Image1: TImage;
     ISOBrowseButton: TButton;
-    ISOEdit: TEdit;
+    ISOEdit: TMemo;
     ISOLabel: TLabel;
     ISOStepLabel: TLabel;
     DDProgress: TProgressBar;
@@ -81,8 +82,6 @@ end;
 procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
 var percent, isInteger : Integer;
  begin
-  //DDExecuteOutput.Lines.Clear;
-
   shellProcess := TProcess.Create(nil);
 
   shellProcess.Executable := '/bin/sh';
@@ -94,6 +93,8 @@ var percent, isInteger : Integer;
 
   shellProcess.Execute;
 
+  DDExecuteOutputMore.Lines.CLear;
+
   while shellProcess.Running do
   begin
     DDExecuteOutput.Lines.LoadFromStream(shellProcess.Output);
@@ -104,6 +105,8 @@ var percent, isInteger : Integer;
 
     Application.ProcessMessages;
   end;
+
+  DDExecuteOutputMore.Lines.LoadFromStream(shellProcess.Output);
 
   shellProcess.Free;
 end;

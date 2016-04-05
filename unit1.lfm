@@ -1,16 +1,16 @@
 object MainForm: TMainForm
-  Left = 176
-  Height = 658
-  Top = 182
-  Width = 927
+  Left = 433
+  Height = 807
+  Top = 160
+  Width = 966
   ActiveControl = StepsPanel
   Anchors = []
   AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Laddiso v2.1'
-  ClientHeight = 627
-  ClientWidth = 927
+  ClientHeight = 776
+  ClientWidth = 966
   Menu = MainMenu
   Position = poScreenCenter
   LCLVersion = '1.6.0.4'
@@ -21,18 +21,17 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 597
+    Height = 746
     Top = 0
-    Width = 897
+    Width = 916
     Anchors = [akTop, akLeft, akRight, akBottom]
-    AutoSize = True
-    BorderSpacing.Right = 30
+    BorderSpacing.Right = 50
     BorderSpacing.Bottom = 30
     BevelOuter = bvNone
-    ClientHeight = 597
-    ClientWidth = 897
+    ClientHeight = 746
+    ClientWidth = 916
     Color = clForm
-    Font.Height = -19
+    Font.Height = -32
     Font.Name = 'Noto Sans'
     ParentColor = False
     ParentFont = False
@@ -42,9 +41,9 @@ object MainForm: TMainForm
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = USBRefreshButton
       AnchorSideTop.Side = asrCenter
-      Left = 132
+      Left = 216
       Height = 27
-      Top = 32
+      Top = 39
       Width = 143
       BorderSpacing.Left = 4
       BorderSpacing.Bottom = 2
@@ -60,12 +59,11 @@ object MainForm: TMainForm
       AnchorSideTop.Control = USBRefreshButton
       AnchorSideTop.Side = asrBottom
       AnchorSideBottom.Side = asrCenter
-      Left = 44
+      Left = 62
       Height = 39
-      Top = 69
-      Width = 844
+      Top = 76
+      Width = 500
       Align = alCustom
-      AutoSize = False
       BorderSpacing.Left = 6
       BorderSpacing.Top = 4
       BorderStyle = bsSingle
@@ -84,13 +82,13 @@ object MainForm: TMainForm
       AnchorSideLeft.Control = StepsPanel
       AnchorSideTop.Control = StepsPanel
       Left = 20
-      Height = 30
+      Height = 45
       Top = 30
-      Width = 18
+      Width = 36
       BorderSpacing.Left = 20
       BorderSpacing.Top = 30
-      Caption = '1.'
-      Font.Height = -21
+      Caption = 'I.  '
+      Font.Height = -32
       Font.Name = 'Noto Sans'
       ParentColor = False
       ParentFont = False
@@ -100,13 +98,13 @@ object MainForm: TMainForm
       AnchorSideTop.Control = USBLabel
       AnchorSideTop.Side = asrBottom
       Left = 20
-      Height = 24
-      Top = 149
-      Width = 17
-      BorderSpacing.Top = 90
-      Caption = '2.'
-      Font.Height = -21
-      Font.Name = 'FreeSans'
+      Height = 45
+      Top = 166
+      Width = 39
+      BorderSpacing.Top = 100
+      Caption = 'II. '
+      Font.Height = -32
+      Font.Name = 'Noto Sans'
       ParentColor = False
       ParentFont = False
     end
@@ -115,9 +113,9 @@ object MainForm: TMainForm
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = ISOBrowseButton
       AnchorSideTop.Side = asrCenter
-      Left = 128
+      Left = 219
       Height = 27
-      Top = 148
+      Top = 175
       Width = 105
       BorderSpacing.Left = 4
       BorderSpacing.Bottom = 2
@@ -133,11 +131,10 @@ object MainForm: TMainForm
       AnchorSideTop.Control = ISOStepLabel
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
-      Left = 43
+      Left = 65
       Height = 39
-      Top = 142
-      Width = 81
-      AutoSize = True
+      Top = 169
+      Width = 150
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
       Caption = 'Browse'
@@ -152,13 +149,13 @@ object MainForm: TMainForm
       AnchorSideTop.Control = ISOLabel
       AnchorSideTop.Side = asrBottom
       Left = 20
-      Height = 24
-      Top = 265
-      Width = 17
-      BorderSpacing.Top = 90
-      Caption = '3.'
-      Font.Height = -21
-      Font.Name = 'FreeSans'
+      Height = 45
+      Top = 342
+      Width = 42
+      BorderSpacing.Top = 140
+      Caption = 'III.'
+      Font.Height = -32
+      Font.Name = 'Noto Sans'
       ParentColor = False
       ParentFont = False
     end
@@ -167,9 +164,9 @@ object MainForm: TMainForm
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = DDExecuteButton
       AnchorSideTop.Side = asrCenter
-      Left = 132
+      Left = 222
       Height = 27
-      Top = 264
+      Top = 351
       Width = 156
       BorderSpacing.Left = 4
       BorderSpacing.Bottom = 2
@@ -179,37 +176,16 @@ object MainForm: TMainForm
       ParentColor = False
       ParentFont = False
     end
-    object DDEdit: TEdit
-      AnchorSideLeft.Control = DDStepLabel
-      AnchorSideLeft.Side = asrBottom
-      AnchorSideTop.Control = DDExecuteButton
-      AnchorSideTop.Side = asrBottom
-      AnchorSideRight.Side = asrBottom
-      AnchorSideBottom.Side = asrCenter
-      Left = 43
-      Height = 39
-      Top = 301
-      Width = 845
-      BorderSpacing.Left = 6
-      BorderSpacing.Top = 4
-      Font.Height = -19
-      Font.Name = 'Noto Sans'
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 4
-      Text = 'pv ?.iso | pkexec dd of=/dev/sd?'
-    end
     object DDExecuteButton: TButton
       AnchorSideLeft.Control = DDStepLabel
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = DDStepLabel
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
-      Left = 43
+      Left = 68
       Height = 39
-      Top = 258
-      Width = 85
-      AutoSize = True
+      Top = 345
+      Width = 150
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
       Caption = 'Execute'
@@ -225,11 +201,10 @@ object MainForm: TMainForm
       AnchorSideTop.Control = USBStepLabel
       AnchorSideTop.Side = asrCenter
       AnchorSideRight.Side = asrBottom
-      Left = 44
+      Left = 62
       Height = 39
-      Top = 26
-      Width = 84
-      AutoSize = True
+      Top = 33
+      Width = 150
       BorderSpacing.Left = 6
       BorderSpacing.Bottom = 2
       Caption = 'Refresh'
@@ -243,10 +218,10 @@ object MainForm: TMainForm
       AnchorSideLeft.Control = DDEdit
       AnchorSideTop.Control = TermOutput
       AnchorSideTop.Side = asrBottom
-      Left = 43
+      Left = 68
       Height = 121
-      Top = 458
-      Width = 620
+      Top = 611
+      Width = 653
       BorderSpacing.Top = 4
       BorderStyle = bsNone
       Color = 3882044
@@ -258,16 +233,16 @@ object MainForm: TMainForm
       )
       ParentFont = False
       ScrollBars = ssAutoBoth
-      TabOrder = 5
+      TabOrder = 4
     end
     object TermOutput: TLabel
       AnchorSideLeft.Control = DDEdit
       AnchorSideTop.Control = DDProgress
-      Left = 43
+      Left = 68
       Height = 27
-      Top = 427
+      Top = 580
       Width = 155
-      BorderSpacing.Top = 40
+      BorderSpacing.Top = 20
       Caption = 'Execution results'
       Font.Height = -19
       Font.Name = 'Noto Sans'
@@ -278,11 +253,11 @@ object MainForm: TMainForm
       AnchorSideLeft.Control = DDExecuteButton
       AnchorSideTop.Control = DDEdit
       AnchorSideTop.Side = asrBottom
-      Left = 43
+      Left = 68
       Height = 27
-      Top = 360
+      Top = 533
       Width = 81
-      BorderSpacing.Top = 20
+      BorderSpacing.Top = 10
       Caption = 'Progress'
       Font.Height = -19
       Font.Name = 'Noto Sans'
@@ -293,45 +268,25 @@ object MainForm: TMainForm
       AnchorSideLeft.Control = DDExecuteButton
       AnchorSideTop.Control = ProgressLabel
       AnchorSideTop.Side = asrBottom
-      Left = 43
-      Height = 32
-      Top = 387
-      Width = 620
-      Smooth = True
-      TabOrder = 6
-      BarShowText = True
-    end
-    object ISOEdit: TEdit
-      AnchorSideLeft.Control = ISOStepLabel
-      AnchorSideLeft.Side = asrBottom
-      AnchorSideTop.Control = ISOBrowseButton
-      AnchorSideTop.Side = asrBottom
-      AnchorSideBottom.Side = asrBottom
-      Left = 43
-      Height = 39
-      Top = 185
+      Left = 68
+      Height = 10
+      Top = 560
       Width = 845
-      BorderSpacing.Left = 6
-      BorderSpacing.Top = 4
-      Font.Height = -19
-      Font.Name = 'Noto Sans'
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 7
+      Smooth = True
+      TabOrder = 5
     end
     object Image1: TImage
-      AnchorSideLeft.Control = StepsPanel
       AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = ProgressLabel
       AnchorSideRight.Control = StepsPanel
       AnchorSideRight.Side = asrBottom
-      AnchorSideBottom.Control = StepsPanel
       AnchorSideBottom.Side = asrBottom
-      Left = 717
-      Height = 152
-      Top = 415
+      Left = 736
+      Height = 159
+      Top = 573
       Width = 180
-      Anchors = [akRight, akBottom]
-      BorderSpacing.Bottom = 30
+      Anchors = [akTop, akRight]
+      BorderSpacing.Top = 40
       Center = True
       Picture.Data = {
         1754506F727461626C654E6574776F726B477261706869631311000089504E47
@@ -474,6 +429,62 @@ object MainForm: TMainForm
         EEC9DC0000000049454E44AE426082
       }
       Transparent = True
+    end
+    object ISOEdit: TMemo
+      AnchorSideLeft.Control = ISOStepLabel
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = ISOBrowseButton
+      AnchorSideTop.Side = asrBottom
+      AnchorSideBottom.Side = asrBottom
+      Left = 65
+      Height = 79
+      Top = 212
+      Width = 845
+      BorderSpacing.Left = 6
+      BorderSpacing.Top = 4
+      Font.Height = -19
+      Font.Name = 'Noto Sans'
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 6
+    end
+    object DDEdit: TMemo
+      AnchorSideLeft.Control = DDStepLabel
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = DDExecuteButton
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Side = asrCenter
+      Left = 68
+      Height = 135
+      Top = 388
+      Width = 845
+      BorderSpacing.Left = 6
+      BorderSpacing.Top = 4
+      Font.Height = -19
+      Font.Name = 'Noto Sans'
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 7
+    end
+    object DDExecuteOutputMore: TMemo
+      AnchorSideLeft.Control = DDEdit
+      AnchorSideTop.Control = DDExecuteOutput
+      Left = 68
+      Height = 60
+      Top = 661
+      Width = 653
+      BorderSpacing.Top = 50
+      BorderStyle = bsNone
+      Color = 3947579
+      Font.Color = clWhite
+      Font.Height = -15
+      Font.Name = 'Monospace'
+      Lines.Strings = (
+        ''
+      )
+      ParentFont = False
+      TabOrder = 8
     end
   end
   object MainMenu: TMainMenu
