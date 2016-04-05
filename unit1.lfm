@@ -1,16 +1,16 @@
 object MainForm: TMainForm
   Left = 176
-  Height = 695
+  Height = 658
   Top = 182
-  Width = 1200
+  Width = 927
   ActiveControl = StepsPanel
   Anchors = []
   AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Laddiso v2.1'
-  ClientHeight = 664
-  ClientWidth = 1200
+  ClientHeight = 627
+  ClientWidth = 927
   Menu = MainMenu
   Position = poScreenCenter
   LCLVersion = '1.6.0.4'
@@ -21,16 +21,16 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 0
-    Height = 634
+    Height = 597
     Top = 0
-    Width = 1170
+    Width = 897
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 30
     BorderSpacing.Bottom = 30
     BevelOuter = bvNone
-    ClientHeight = 634
-    ClientWidth = 1170
+    ClientHeight = 597
+    ClientWidth = 897
     Color = clForm
     Font.Height = -19
     Font.Name = 'Noto Sans'
@@ -63,8 +63,9 @@ object MainForm: TMainForm
       Left = 44
       Height = 39
       Top = 69
-      Width = 500
+      Width = 844
       Align = alCustom
+      AutoSize = False
       BorderSpacing.Left = 6
       BorderSpacing.Top = 4
       BorderStyle = bsSingle
@@ -188,7 +189,7 @@ object MainForm: TMainForm
       Left = 43
       Height = 39
       Top = 301
-      Width = 1117
+      Width = 845
       BorderSpacing.Left = 6
       BorderSpacing.Top = 4
       Font.Height = -19
@@ -239,15 +240,13 @@ object MainForm: TMainForm
       TabOrder = 0
     end
     object DDExecuteOutput: TMemo
-      AnchorSideLeft.Control = DDProgress
-      AnchorSideLeft.Side = asrBottom
+      AnchorSideLeft.Control = DDEdit
       AnchorSideTop.Control = TermOutput
       AnchorSideTop.Side = asrBottom
-      Left = 564
+      Left = 43
       Height = 121
-      Top = 391
-      Width = 596
-      BorderSpacing.Left = 20
+      Top = 458
+      Width = 620
       BorderSpacing.Top = 4
       BorderStyle = bsNone
       Color = 3882044
@@ -262,16 +261,13 @@ object MainForm: TMainForm
       TabOrder = 5
     end
     object TermOutput: TLabel
-      AnchorSideLeft.Control = DDProgress
-      AnchorSideLeft.Side = asrBottom
-      AnchorSideTop.Control = DDEdit
-      AnchorSideTop.Side = asrBottom
-      Left = 564
+      AnchorSideLeft.Control = DDEdit
+      AnchorSideTop.Control = DDProgress
+      Left = 43
       Height = 27
-      Top = 360
+      Top = 427
       Width = 155
-      BorderSpacing.Left = 20
-      BorderSpacing.Top = 20
+      BorderSpacing.Top = 40
       Caption = 'Execution results'
       Font.Height = -19
       Font.Name = 'Noto Sans'
@@ -300,20 +296,42 @@ object MainForm: TMainForm
       Left = 43
       Height = 32
       Top = 387
-      Width = 501
+      Width = 620
       Smooth = True
       TabOrder = 6
       BarShowText = True
     end
+    object ISOEdit: TEdit
+      AnchorSideLeft.Control = ISOStepLabel
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = ISOBrowseButton
+      AnchorSideTop.Side = asrBottom
+      AnchorSideBottom.Side = asrBottom
+      Left = 43
+      Height = 39
+      Top = 185
+      Width = 845
+      BorderSpacing.Left = 6
+      BorderSpacing.Top = 4
+      Font.Height = -19
+      Font.Name = 'Noto Sans'
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 7
+    end
     object Image1: TImage
-      AnchorSideTop.Control = StepsPanel
+      AnchorSideLeft.Control = StepsPanel
+      AnchorSideLeft.Side = asrCenter
       AnchorSideRight.Control = StepsPanel
       AnchorSideRight.Side = asrBottom
-      Left = 544
-      Height = 136
-      Top = 0
-      Width = 626
-      Anchors = [akTop, akRight]
+      AnchorSideBottom.Control = StepsPanel
+      AnchorSideBottom.Side = asrBottom
+      Left = 717
+      Height = 152
+      Top = 415
+      Width = 180
+      Anchors = [akRight, akBottom]
+      BorderSpacing.Bottom = 30
       Center = True
       Picture.Data = {
         1754506F727461626C654E6574776F726B477261706869631311000089504E47
@@ -455,24 +473,7 @@ object MainForm: TMainForm
         7E8E14586A7822406401B090F844A1DE2527AEE95D7492D118FEFFA78FFEA7FE
         EEC9DC0000000049454E44AE426082
       }
-    end
-    object ISOEdit: TEdit
-      AnchorSideLeft.Control = ISOStepLabel
-      AnchorSideLeft.Side = asrBottom
-      AnchorSideTop.Control = ISOBrowseButton
-      AnchorSideTop.Side = asrBottom
-      AnchorSideBottom.Side = asrBottom
-      Left = 43
-      Height = 39
-      Top = 185
-      Width = 1117
-      BorderSpacing.Left = 6
-      BorderSpacing.Top = 4
-      Font.Height = -19
-      Font.Name = 'Noto Sans'
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 7
+      Transparent = True
     end
   end
   object MainMenu: TMainMenu
