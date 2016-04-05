@@ -18,6 +18,7 @@ type
     DDExecuteButton: TButton;
     DDLabel: TLabel;
     DDStepLabel: TLabel;
+    Image1: TImage;
     ISOBrowseButton: TButton;
     ISOEdit: TEdit;
     ISOLabel: TLabel;
@@ -80,8 +81,7 @@ end;
 procedure TMainForm.DDExecuteButtonClick(Sender: TObject);
 var percent, isInteger : Integer;
  begin
-  DDExecuteOutput.Lines.Clear;
-  DDExecuteOutput.Lines.Add('Start');
+  //DDExecuteOutput.Lines.Clear;
 
   shellProcess := TProcess.Create(nil);
 
