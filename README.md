@@ -11,4 +11,4 @@ v2.1 April 5th, 2016
 * Getting realtime output feedback using: `Application.ProcessMessages`.
 * Larger main form.
 
-![ScreenShot](screenshot.png)
+![ScreenShot](screenshot.jpg)
